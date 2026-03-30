@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 Anniyan Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Nosifer&family=Tiro+Tamil&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blood:#cc0000;--dark-blood:#8b0000;--deeper:#660000;--crimson:#dc143c;--fire:#ff4400;--ember:#ff3300;--dark-bg:#0a0000;--bone:#e0d5c5;--ash:#bbb;--green:#00ff00}
+body{font-family:'Tiro Tamil','Segoe UI',sans-serif;background:var(--dark-bg);color:var(--bone);overflow-x:hidden;min-height:100vh;background-image:radial-gradient(ellipse at bottom,#1a0000 0%,#0a0000 70%)}
+.hidden{display:none!important}
+
+/* PARTICLES */
+#particles-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
+.particle{position:absolute;border-radius:50%;animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+
+/* BUTTONS */
+.btn{
+    padding:15px 30px;font-size:1rem;font-family:'Creepster',cursive;
+    font-weight:bold;color:#fff;
+    background:linear-gradient(135deg,var(--deeper),var(--blood),var(--crimson));
+    border:2px solid var(--blood);border-radius:10px;cursor:pointer;
+    transition:all .3s;text-transform:uppercase;letter-spacing:2px;
+    box-shadow:0 0 15px rgba(204,0,0,.4);
+}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(204,0,0,.6)}
+.btn:active{transform:scale(.95)}
+.btn-sec{
+    background:linear-gradient(135deg,#222,#444);
+    border-color:#555;box-shadow:0 0 10px rgba(80,80,80,.3);
+}
+.btn-sec:hover{box-shadow:0 0 20px rgba(120,120,120,.4)}
+.btn-logout{background:linear-gradient(135deg,#440000,#880000)!important}
+
+/* INPUTS */
+.inp{
+    width:100%;padding:14px 18px;font-size:1rem;color:var(--bone);
+    background:linear-gradient(135deg,#0a0000,#150505);
+    border:2px solid #440000;border-radius:10px;outline:none;
+    transition:all .3s;margin-bottom:18px;font-family:inherit;
+}
+.inp::placeholder{color:#555;font-style:italic}
+.inp:focus{border-color:var(--blood);box-shadow:0 0 15px rgba(204,0,0,.3)}
+.sel{
+    cursor:pointer;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23cc0000'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 15px center;padding-right:40px;
+}
+.sel option{background:#1a0000;color:var(--bone)}
+.tarea{resize:vertical;min-height:100px}
+.lbl{display:block;font-family:'Tiro Tamil',serif;font-size:1rem;color:var(--crimson);margin-bottom:8px;text-align:left}
+
+/* BADGES */
+.badge{padding:5px 14px;border-radius:20px;font-family:'Creepster',cursive;font-size:.8rem;font-weight:bold;display:inline-block}
+.b-pend{background:linear-gradient(135deg,#663300,#cc6600);color:#fff}
+.b-prog{background:linear-gradient(135deg,#666600,#cccc00);color:#000}
+.b-done{background:linear-gradient(135deg,#006600,#00cc00);color:#fff}
+
+/* ========== LOGIN ========== */
+.login-page{
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:20px;position:relative;z-index:2;
+}
+.login-box{
+    background:linear-gradient(135deg,#0d0000,#1a0505);
+    border:2px solid var(--dark-blood);border-radius:20px;
+    padding:50px 40px;max-width:450px;width:100%;text-align:center;
+    box-shadow:0 0 40px rgba(204,0,0,.3);
+}
+.login-box h2{
+    font-family:'Nosifer',cursive;font-size:1.8rem;color:var(--blood);
+    margin-bottom:5px;text-shadow:0 0 10px var(--blood);
+}
+.login-box .sub{
+    font-family:'Tiro Tamil',serif;color:var(--crimson);
+    margin-bottom:30px;font-size:1.1rem;
+}
+.lock-ico{font-size:4rem;margin-bottom:20px;animation:lockGlow 2s ease-in-out infinite alternate}
+@keyframes lockGlow{0%{filter:brightness(.7)}100%{filter:brightness(1.3) drop-shadow(0 0 10px #cc0000)}}
+.err{color:var(--blood);font-family:'Tiro Tamil',serif;margin-top:15px;min-height:25px;font-size:1rem}
+
+/* ========== DASHBOARD ========== */
+.dashboard{padding:20px;max-width:1400px;margin:0 auto;position:relative;z-index:2}
+
+.dash-head{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:20px;background:linear-gradient(135deg,#0d0000,#1a0505);
+    border:1px solid var(--dark-blood);border-radius:15px;
+    margin-bottom:25px;flex-wrap:wrap;gap:15px;
+}
+.dash-head h1{
+    font-family:'Nosifer',cursive;font-size:1.3rem;color:var(--blood);
+    text-shadow:0 0 10px var(--blood);
+}
+.dash-ctrls{display:flex;gap:10px;flex-wrap:wrap}
+
+/* STATS */
+.dash-stats{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:20px;margin-bottom:25px;
+}
+.ds{
+    background:linear-gradient(135deg,#0d0000,#1a0505);
+    border:1px solid var(--dark-blood);border-radius:15px;
+    padding:22px;text-align:center;transition:all .3s;
+}
+.ds:hover{border-color:var(--blood);box-shadow:0 0 15px rgba(204,0,0,.3)}
+.ds-ico{font-size:2rem;margin-bottom:8px}
+.ds-num{font-family:'Nosifer',cursive;font-size:1.8rem;color:var(--blood)}
+.ds-lbl{font-family:'Tiro Tamil',serif;color:var(--ash);font-size:.9rem}
+
+/* FILTERS */
+.filters{
+    display:flex;gap:12px;margin-bottom:25px;flex-wrap:wrap;
+    padding:18px;background:linear-gradient(135deg,#0d0000,#1a0505);
+    border:1px solid #440000;border-radius:15px;
+}
+.filters .inp,.filters .sel{margin-bottom:0;min-width:150px;flex:1}
+
+/* TABLE */
+.tbl-box{
+    background:linear-gradient(135deg,#0d0000,#1a0505);
+    border:1px solid var(--dark-blood);border-radius:15px;overflow:hidden;
+}
+.tbl{width:100%;border-collapse:collapse}
+.tbl th{
+    background:linear-gradient(135deg,#1a0000,#2a0500);
+    padding:14px 10px;text-align:left;font-family:'Creepster',cursive;
+    color:var(--blood);font-size:.9rem;border-bottom:2px solid var(--dark-blood);
+    white-space:nowrap;
+}
+.tbl td{
+    padding:10px;border-bottom:1px solid #220000;
+    color:var(--bone);font-size:.85rem;vertical-align:top;
+}
+.tbl tr:hover td{background:rgba(204,0,0,.03)}
+.sv-lo{color:#ff6633}
+.sv-md{color:#cc0000}
+.sv-hi{color:#ff0000;font-weight:bold;animation:blinker 1s infinite}
+@keyframes blinker{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ACTION BUTTONS */
+.ab{
+    padding:5px 10px;font-size:.75rem;font-family:'Creepster',cursive;
+    border:1px solid;border-radius:5px;cursor:pointer;
+    transition:all .3s;margin:2px;white-space:nowrap;
+    color:#fff;background:transparent;
+}
+.ab-v{border-color:#0088ff;color:#0088ff}
+.ab-v:hover{background:#0088ff;color:#fff}
+.ab-p{border-color:#ffcc00;color:#ffcc00}
+.ab-p:hover{background:#ffcc00;color:#000}
+.ab-r{border-color:#00cc00;color:#00cc00}
+.ab-r:hover{background:#00cc00;color:#000}
+.ab-d{border-color:#cc0000;color:#cc0000}
+.ab-d:hover{background:#cc0000;color:#fff}
+
+/* NO DATA */
+.nodata{text-align:center;padding:60px 20px}
+.nodata h3{font-family:'Tiro Tamil',serif;color:var(--crimson);font-size:1.3rem;margin:15px 0}
+.nodata p{color:#666}
+
+/* ========== MODAL ========== */
+.modal-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,.92);display:flex;align-items:center;
+    justify-content:center;z-index:10000;padding:20px;
+}
+.modal-box{
+    background:linear-gradient(135deg,#1a0000,#0d0505);
+    border:2px solid var(--blood);border-radius:20px;
+    padding:30px;max-width:650px;width:100%;text-align:left;
+    animation:modalIn .4s ease-out;
+    box-shadow:0 0 40px rgba(204,0,0,.3);
+    max-height:85vh;overflow-y:auto;
+}
+@keyframes modalIn{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:scale(1)}}
+.modal-box::-webkit-scrollbar{width:8px}
+.modal-box::-webkit-scrollbar-track{background:#1a0000}
+.modal-box::-webkit-scrollbar-thumb{background:var(--dark-blood);border-radius:4px}
+
+.di{display:flex;padding:10px 0;border-bottom:1px solid #220000;gap:15px}
+.di:last-child{border-bottom:none}
+.di-l{font-family:'Tiro Tamil',serif;color:var(--crimson);min-width:120px;font-weight:bold;font-size:.95rem}
+.di-v{color:var(--bone);word-break:break-word}
+
+/* LOADER */
+.loader-bg{
+    position:fixed;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,.92);display:flex;align-items:center;
+    justify-content:center;z-index:99999;
+}
+.loader-box{text-align:center}
+.loader-ico{font-size:5rem;color:var(--blood);animation:spinIt 2s linear infinite;text-shadow:0 0 20px var(--blood)}
+@keyframes spinIt{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.loader-box p{font-family:'Tiro Tamil',serif;color:var(--crimson);font-size:1.1rem;margin-top:15px}
+
+/* SHAKE */
+@keyframes shakeIt{
+    0%,100%{transform:translateX(0)}
+    10%,30%,50%,70%,90%{transform:translateX(-10px)}
+    20%,40%,60%,80%{transform:translateX(10px)}
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .dash-head{flex-direction:column;text-align:center}
+    .dash-head h1{font-size:1.1rem}
+    .filters{flex-direction:column}
+    .filters .inp,.filters .sel{min-width:100%}
+    .tbl-box{overflow-x:auto}
+    .tbl{min-width:1000px}
+    .modal-box{padding:20px}
+    .di{flex-direction:column;gap:5px}
+    .login-box{padding:30px 20px}
+    .login-box h2{font-size:1.3rem}
+    .dash-ctrls{justify-content:center}
+}
+@media(max-width:480px){
+    .btn{padding:12px 18px;font-size:.9rem}
+    .ds-num{font-size:1.4rem}
+}
+
+::-webkit-scrollbar{width:10px}
+::-webkit-scrollbar-track{background:#050000}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--dark-blood),var(--deeper));border-radius:5px}
+::selection{background:var(--dark-blood);color:#fff}
+</style>
+</head>
+<body>
+
+<div id="particles-container"></div>
+
+<!-- ========== LOGIN SCREEN ========== -->
+<div id="loginPage" class="login-page">
+    <div class="login-box" id="loginBox">
+        <div class="lock-ico">🔱</div>
+        <h2>ANNIYAN ADMIN</h2>
+        <p class="sub">நீதிபதி நுழைவாயில் - Judge's Gateway</p>
+        <input
+            type="password"
+            id="passwordInput"
+            class="inp"
+            placeholder="கடவுச்சொல் உள்ளிடு..."
+            style="text-align:center;font-size:1.2rem;margin-bottom:15px"
+        >
+        <br>
+        <button class="btn" id="loginBtn">🔓 திற - UNLOCK 🔓</button>
+        <p class="err" id="errorMsg"></p>
+        <div style="margin-top:25px">
+            <a href="index.html" style="color:var(--crimson);text-decoration:none;font-family:'Tiro Tamil',serif">
+                🔱 முகப்பு பக்கம் 🔱
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- ========== DASHBOARD ========== -->
+<div id="dashboardPage" class="dashboard hidden">
+    <!-- Header -->
+    <div class="dash-head">
+        <h1>🔱 அன்னியன் DASHBOARD 🔱</h1>
+        <div class="dash-ctrls">
+            <button class="btn btn-sec" id="exportBtn">📥 Export</button>
+            <button class="btn btn-sec" onclick="window.location.href='index.html'">🏠 முகப்பு</button>
+            <button class="btn btn-logout" id="logoutBtn">🚪 வெளியேறு</button>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="dash-stats">
+        <div class="ds">
+            <div class="ds-ico">📊</div>
+            <div class="ds-num" id="statTotal">0</div>
+            <div class="ds-lbl">மொத்தம் Total</div>
+        </div>
+        <div class="ds">
+            <div class="ds-ico">🔥</div>
+            <div class="ds-num" id="statPending" style="color:#ff4400">0</div>
+            <div class="ds-lbl">நிலுவை Pending</div>
+        </div>
+        <div class="ds">
+            <div class="ds-ico">⚡</div>
+            <div class="ds-num" id="statProgress" style="color:#cc9900">0</div>
+            <div class="ds-lbl">நடவடிக்கை Progress</div>
+        </div>
+        <div class="ds">
+            <div class="ds-ico">✅</div>
+            <div class="ds-num" id="statResolved" style="color:#00cc00">0</div>
+            <div class="ds-lbl">தீர்வு Resolved</div>
+        </div>
+        <div class="ds">
+            <div class="ds-ico">💀</div>
+            <div class="ds-num" id="statHigh" style="color:#ff0000">0</div>
+            <div class="ds-lbl">மகா பாவம் Critical</div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+        <input type="text" id="filterSearch" class="inp" placeholder="🔍 தேடு - Search...">
+        <select id="filterStatus" class="inp sel">
+            <option value="all">All Status</option>
+            <option value="Pending">🔥 Pending</option>
+            <option value="In Progress">⚡ In Progress</option>
+            <option value="Resolved">✅ Resolved</option>
+        </select>
+        <select id="filterSeverity" class="inp sel">
+            <option value="all">All Severity</option>
+            <option value="High">💀 High</option>
+            <option value="Medium">🔥 Medium</option>
+            <option value="Low">⚠️ Low</option>
+        </select>
+        <select id="filterDept" class="inp sel">
+            <option value="all">All Dept</option>
+            <option value="CSE">CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="EEE">EEE</option>
+            <option value="IT">IT</option>
+            <option value="MBA">MBA</option>
+            <option value="OTHER">Other</option>
+        </select>
+    </div>
+
+    <!-- Table -->
+    <div class="tbl-box">
+        <table class="tbl">
+            <thead>
+                <tr>
+                    <th>🎫 Token</th>
+                    <th>👤 பெயர்</th>
+                    <th>🔢 Roll</th>
+                    <th>🏛️ Dept</th>
+                    <th>⚠️ குற்றம்</th>
+                    <th>👤 குற்றவாளி</th>
+                    <th>⚖️ Severity</th>
+                    <th>📊 Status</th>
+                    <th>📅 Date</th>
+                    <th>⚙️ Actions</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+        <div id="noDataMsg" class="nodata hidden">
+            <div style="font-size:5rem">🔱</div>
+            <h3>புகார்கள் இல்லை!</h3>
+            <p>No complaints found.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== DETAIL MODAL ========== -->
+<div id="detailModal" class="modal-bg hidden">
+    <div class="modal-box" id="detailBody"></div>
+</div>
+
+<!-- ========== LOADER ========== -->
+<div id="loaderOverlay" class="loader-bg hidden">
+    <div class="loader-box">
+        <div class="loader-ico">🔱</div>
+        <p>அன்னியன் விசாரிக்கிறான்...</p>
+    </div>
+</div>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+<script>
+// ==========================================
+// FIREBASE INIT
+// ==========================================
+var firebaseConfig = {
+    apiKey: "AIzaSyA4yp_dKNZgLevqda4bQL6V92kvbgoHSQs",
+    authDomain: "tech-venture.firebaseapp.com",
+    databaseURL: "https://tech-venture-default-rtdb.firebaseio.com",
+    projectId: "tech-venture",
+    storageBucket: "tech-venture.firebasestorage.app",
+    messagingSenderId: "444695555385",
+    appId: "1:444695555385:web:acd44a36be2f0d5f7acce8"
+};
+firebase.initializeApp(firebaseConfig);
+var database = firebase.database();
+
+// ==========================================
+// VARIABLES
+// ==========================================
+var ADMIN_PASSWORD = "admin123";
+var allComplaints = [];
+var isLoggedIn = false;
+
+// ==========================================
+// PARTICLES
+// ==========================================
+function startParticles() {
+    var container = document.getElementById('particles-container');
+    if (!container) return;
+    var colors = ['#cc0000', '#ff4400', '#8b0000', '#dc143c'];
+    setInterval(function() {
+        var p = document.createElement('div');
+        p.className = 'particle';
+        var size = Math.random() * 5 + 2;
+        p.style.width = size + 'px';
+        p.style.height = size + 'px';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        p.style.animationDuration = (Math.random() * 5 + 4) + 's';
+        p.style.boxShadow = '0 0 ' + (size * 2) + 'px ' + p.style.backgroundColor;
+        container.appendChild(p);
+        setTimeout(function() { p.remove(); }, 9000);
+    }, 300);
+}
+startParticles();
+
+// ==========================================
+// HELPER: ESCAPE HTML
+// ==========================================
+function escapeHtml(text) {
+    if (!text) return '';
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// ==========================================
+// LOGIN
+// ==========================================
+function doLogin() {
+    var passwordField = document.getElementById('passwordInput');
+    var errorField = document.getElementById('errorMsg');
+    var enteredPassword = passwordField.value;
+
+    if (enteredPassword === ADMIN_PASSWORD) {
+        isLoggedIn = true;
+        sessionStorage.setItem('anniyanAdmin', 'true');
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('dashboardPage').classList.remove('hidden');
+        errorField.textContent = '';
+        loadAllData();
+    } else {
+        errorField.textContent = '🔱 தவறான கடவுச்சொல்! Wrong Password!';
+        passwordField.value = '';
+        var box = document.getElementById('loginBox');
+        box.style.animation = 'none';
+        box.offsetHeight;
+        box.style.animation = 'shakeIt 0.5s ease-in-out';
+    }
+}
+
+function doLogout() {
+    isLoggedIn = false;
+    sessionStorage.removeItem('anniyanAdmin');
+    document.getElementById('dashboardPage').classList.add('hidden');
+    document.getElementById('loginPage').classList.remove('hidden');
+    document.getElementById('passwordInput').value = '';
+    document.getElementById('errorMsg').textContent = '';
+}
+
+// ==========================================
+// EVENT LISTENERS
+// ==========================================
+document.getElementById('loginBtn').addEventListener('click', function() {
+    doLogin();
+});
+
+document.getElementById('passwordInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        doLogin();
+    }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', function() {
+    doLogout();
+});
+
+document.getElementById('exportBtn').addEventListener('click', function() {
+    exportToCSV();
+});
+
+document.getElementById('filterSearch').addEventListener('input', function() {
+    applyFilters();
+});
+
+document.getElementById('filterStatus').addEventListener('change', function() {
+    applyFilters();
+});
+
+document.getElementById('filterSeverity').addEventListener('change', function() {
+    applyFilters();
+});
+
+document.getElementById('filterDept').addEventListener('change', function() {
+    applyFilters();
+});
+
+document.getElementById('detailModal').addEventListener('click', function(e) {
+    if (e.target.id === 'detailModal') {
+        closeDetailModal();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeDetailModal();
+    }
+});
+
+// ==========================================
+// CHECK SESSION ON LOAD
+// ==========================================
+window.addEventListener('DOMContentLoaded', function() {
+    if (sessionStorage.getItem('anniyanAdmin') === 'true') {
+        isLoggedIn = true;
+        document.getElementById('loginPage').classList.add('hidden');
+        document.getElementById('dashboardPage').classList.remove('hidden');
+        loadAllData();
+    }
+});
+
+// ==========================================
+// LOAD ALL DATA
+// ==========================================
+function loadAllData() {
+    if (!isLoggedIn) return;
+
+    database.ref('complaints').on('value', function(snapshot) {
+        allComplaints = [];
+        var total = 0, pending = 0, progress = 0, resolved = 0, high = 0;
+
+        snapshot.forEach(function(child) {
+            var data = child.val();
+            allComplaints.push(data);
+            total++;
+            if (data.status === 'Pending') pending++;
+            if (data.status === 'In Progress') progress++;
+            if (data.status === 'Resolved') resolved++;
+            if (data.severity === 'High') high++;
+        });
+
+        // Sort newest first
+        allComplaints.sort(function(a, b) {
+            return new Date(b.timestamp) - new Date(a.timestamp);
+        });
+
+        // Update stats
+        document.getElementById('statTotal').textContent = total;
+        document.getElementById('statPending').textContent = pending;
+        document.getElementById('statProgress').textContent = progress;
+        document.getElementById('statResolved').textContent = resolved;
+        document.getElementById('statHigh').textContent = high;
+
+        applyFilters();
+    });
+}
+
+// ==========================================
+// FILTER
+// ==========================================
+function applyFilters() {
+    var searchText = document.getElementById('filterSearch').value.toLowerCase();
+    var statusFilter = document.getElementById('filterStatus').value;
+    var severityFilter = document.getElementById('filterSeverity').value;
+    var deptFilter = document.getElementById('filterDept').value;
+
+    var filtered = allComplaints.filter(function(c) {
+        // Search match
+        var matchSearch = true;
+        if (searchText) {
+            matchSearch = (
+                c.ticketId.toLowerCase().indexOf(searchText) !== -1 ||
+                c.name.toLowerCase().indexOf(searchText) !== -1 ||
+                c.rollNumber.toLowerCase().indexOf(searchText) !== -1 ||
+                c.description.toLowerCase().indexOf(searchText) !== -1 ||
+                (c.accusedName && c.accusedName.toLowerCase().indexOf(searchText) !== -1)
+            );
+        }
+
+        var matchStatus = (statusFilter === 'all' || c.status === statusFilter);
+        var matchSeverity = (severityFilter === 'all' || c.severity === severityFilter);
+        var matchDept = (deptFilter === 'all' || c.department === deptFilter);
+
+        return matchSearch && matchStatus && matchSeverity && matchDept;
+    });
+
+    renderTable(filtered);
+}
+
+// ==========================================
+// RENDER TABLE
+// ==========================================
+function renderTable(list) {
+    var tbody = document.getElementById('tableBody');
+    var noData = document.getElementById('noDataMsg');
+
+    if (list.length === 0) {
+        tbody.innerHTML = '';
+        noData.classList.remove('hidden');
+        return;
+    }
+
+    noData.classList.add('hidden');
+
+    var html = '';
+    for (var i = 0; i < list.length; i++) {
+        var c = list[i];
+
+        var sevClass = 'sv-lo';
+        var sevEmoji = '⚠️';
+        if (c.severity === 'Medium') { sevClass = 'sv-md'; sevEmoji = '🔥'; }
+        if (c.severity === 'High') { sevClass = 'sv-hi'; sevEmoji = '💀'; }
+
+        var badgeClass = 'b-pend';
+        var badgeEmoji = '🔥';
+        if (c.status === 'In Progress') { badgeClass = 'b-prog'; badgeEmoji = '⚡'; }
+        if (c.status === 'Resolved') { badgeClass = 'b-done'; badgeEmoji = '✅'; }
+
+        html += '<tr>';
+        html += '<td style="font-family:Creepster,cursive;color:var(--blood)">' + escapeHtml(c.ticketId) + '</td>';
+        html += '<td>' + escapeHtml(c.name) + '</td>';
+        html += '<td>' + escapeHtml(c.rollNumber) + '</td>';
+        html += '<td>' + escapeHtml(c.department) + '</td>';
+        html += '<td>' + escapeHtml(c.category) + '</td>';
+        html += '<td>' + escapeHtml(c.accusedName || 'N/A') + '</td>';
+        html += '<td class="' + sevClass + '">' + sevEmoji + ' ' + c.severity + '</td>';
+        html += '<td><span class="badge ' + badgeClass + '" style="font-size:.7rem;padding:3px 8px">' + badgeEmoji + ' ' + c.status + '</span></td>';
+        html += '<td style="font-size:.8rem">' + (c.dateSubmitted || 'N/A') + '</td>';
+        html += '<td>';
+        html += '<button class="ab ab-v" data-action="view" data-id="' + c.ticketId + '">👁️</button>';
+        html += '<button class="ab ab-p" data-action="progress" data-id="' + c.ticketId + '">⚡</button>';
+        html += '<button class="ab ab-r" data-action="resolve" data-id="' + c.ticketId + '">✅</button>';
+        html += '<button class="ab ab-d" data-action="delete" data-id="' + c.ticketId + '">🗑️</button>';
+        html += '</td>';
+        html += '</tr>';
+    }
+
+    tbody.innerHTML = html;
+
+    // Attach event listeners to action buttons
+    var actionButtons = tbody.querySelectorAll('.ab');
+    for (var j = 0; j < actionButtons.length; j++) {
+        actionButtons[j].addEventListener('click', handleActionClick);
+    }
+}
+
+// ==========================================
+// HANDLE ACTION BUTTON CLICKS
+// ==========================================
+function handleActionClick(e) {
+    var button = e.currentTarget;
+    var action = button.getAttribute('data-action');
+    var ticketId = button.getAttribute('data-id');
+
+    if (action === 'view') {
+        showDetail(ticketId);
+    } else if (action === 'progress') {
+        changeStatus(ticketId, 'In Progress');
+    } else if (action === 'resolve') {
+        changeStatus(ticketId, 'Resolved');
+    } else if (action === 'delete') {
+        deleteComplaint(ticketId);
+    }
+}
+
+// ==========================================
+// SHOW DETAIL MODAL
+// ==========================================
+function showDetail(ticketId) {
+    var complaint = null;
+    for (var i = 0; i < allComplaints.length; i++) {
+        if (allComplaints[i].ticketId === ticketId) {
+            complaint = allComplaints[i];
+            break;
+        }
+    }
+    if (!complaint) return;
+
+    var badgeClass = 'b-pend';
+    if (complaint.status === 'In Progress') badgeClass = 'b-prog';
+    if (complaint.status === 'Resolved') badgeClass = 'b-done';
+
+    var bodyHtml = '';
+    bodyHtml += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px">';
+    bodyHtml += '<h2 style="font-family:Nosifer,cursive;color:var(--blood);font-size:1.2rem">' + escapeHtml(complaint.ticketId) + '</h2>';
+    bodyHtml += '<span class="badge ' + badgeClass + '">' + complaint.status + '</span>';
+    bodyHtml += '</div>';
+
+    bodyHtml += '<div class="di"><span class="di-l">👤 பெயர்:</span><span class="di-v">' + escapeHtml(complaint.name) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">🔢 Roll:</span><span class="di-v">' + escapeHtml(complaint.rollNumber) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">🏛️ துறை:</span><span class="di-v">' + escapeHtml(complaint.department) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">⚠️ குற்றம்:</span><span class="di-v">' + escapeHtml(complaint.category) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">⚖️ தீவிரம்:</span><span class="di-v">' + complaint.severity + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">👤 குற்றவாளி:</span><span class="di-v">' + escapeHtml(complaint.accusedName || 'N/A') + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">📝 விவரம்:</span><span class="di-v">' + escapeHtml(complaint.description) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">🔱 தண்டனை:</span><span class="di-v" style="color:var(--blood)">' + escapeHtml(complaint.punishment || '') + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">📧 Email:</span><span class="di-v">' + escapeHtml(complaint.email) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">📱 Phone:</span><span class="di-v">' + escapeHtml(complaint.phone) + '</span></div>';
+    bodyHtml += '<div class="di"><span class="di-l">📅 தேதி:</span><span class="di-v">' + (complaint.dateSubmitted || 'N/A') + '</span></div>';
+
+    // Admin notes section
+    bodyHtml += '<div style="margin-top:20px;padding-top:15px;border-top:1px solid #440000">';
+    bodyHtml += '<label class="lbl">📋 Admin குறிப்பு:</label>';
+    bodyHtml += '<textarea id="adminNotes_' + complaint.ticketId + '" class="inp tarea" rows="3" placeholder="குறிப்பு எழுது...">' + escapeHtml(complaint.adminNotes || '') + '</textarea>';
+    bodyHtml += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">';
+    bodyHtml += '<button class="btn btn-sec" style="flex:1;padding:10px" data-modal-action="save" data-modal-id="' + complaint.ticketId + '">💾 சேமி</button>';
+    bodyHtml += '<button class="btn btn-sec" style="flex:1;padding:10px;border-color:#ff4400;color:#ff4400" data-modal-action="setPending" data-modal-id="' + complaint.ticketId + '">🔥 Pending</button>';
+    bodyHtml += '<button class="btn btn-sec" style="flex:1;padding:10px;border-color:#cccc00;color:#cccc00" data-modal-action="setProgress" data-modal-id="' + complaint.ticketId + '">⚡ Progress</button>';
+    bodyHtml += '<button class="btn btn-sec" style="flex:1;padding:10px;border-color:#00cc00;color:#00cc00" data-modal-action="setResolved" data-modal-id="' + complaint.ticketId + '">✅ Resolved</button>';
+    bodyHtml += '</div></div>';
+
+    bodyHtml += '<div style="text-align:center;margin-top:20px"><button class="btn" id="closeModalBtn">❌ மூடு Close</button></div>';
+
+    document.getElementById('detailBody').innerHTML = bodyHtml;
+    document.getElementById('detailModal').classList.remove('hidden');
+
+    // Attach modal button listeners
+    document.getElementById('closeModalBtn').addEventListener('click', closeDetailModal);
+
+    var modalButtons = document.getElementById('detailBody').querySelectorAll('[data-modal-action]');
+    for (var k = 0; k < modalButtons.length; k++) {
+        modalButtons[k].addEventListener('click', handleModalAction);
+    }
+}
+
+function handleModalAction(e) {
+    var btn = e.currentTarget;
+    var action = btn.getAttribute('data-modal-action');
+    var tid = btn.getAttribute('data-modal-id');
+
+    if (action === 'save') {
+        saveAdminNotes(tid);
+    } else if (action === 'setPending') {
+        changeStatus(tid, 'Pending');
+        closeDetailModal();
+    } else if (action === 'setProgress') {
+        changeStatus(tid, 'In Progress');
+        closeDetailModal();
+    } else if (action === 'setResolved') {
+        changeStatus(tid, 'Resolved');
+        closeDetailModal();
+    }
+}
+
+function closeDetailModal() {
+    document.getElementById('detailModal').classList.add('hidden');
+}
+
+// ==========================================
+// DATABASE OPERATIONS
+// ==========================================
+function changeStatus(ticketId, newStatus) {
+    if (!isLoggedIn) return;
+    database.ref('complaints/' + ticketId + '/status').set(newStatus)
+        .catch(function(error) {
+            alert('Error: ' + error.message);
+        });
+}
+
+function saveAdminNotes(ticketId) {
+    if (!isLoggedIn) return;
+    var notesField = document.getElementById('adminNotes_' + ticketId);
+    if (!notesField) return;
+
+    var notes = notesField.value;
+    database.ref('complaints/' + ticketId + '/adminNotes').set(notes)
+        .then(function() {
+            alert('குறிப்பு சேமிக்கப்பட்டது! Notes saved! ✅');
+        })
+        .catch(function(error) {
+            alert('Error: ' + error.message);
+        });
+}
+
+function deleteComplaint(ticketId) {
+    if (!isLoggedIn) return;
+    var confirmed = confirm('⚠️ ' + ticketId + ' நீக்கவா? Delete? Cannot undo!');
+    if (confirmed) {
+        database.ref('complaints/' + ticketId).remove()
+            .catch(function(error) {
+                alert('Error: ' + error.message);
+            });
+    }
+}
+
+// ==========================================
+// EXPORT CSV
+// ==========================================
+function exportToCSV() {
+    if (!isLoggedIn || allComplaints.length === 0) {
+        alert('No data to export!');
+        return;
+    }
+
+    var headers = [
+        'Token', 'Name', 'Roll', 'Dept', 'Category', 'Accused',
+        'Severity', 'Status', 'Description', 'Punishment',
+        'Email', 'Phone', 'Date', 'Admin Notes'
+    ];
+
+    var rows = [headers.join(',')];
+
+    for (var i = 0; i < allComplaints.length; i++) {
+        var c = allComplaints[i];
+        var row = [
+            '"' + c.ticketId + '"',
+            '"' + c.name + '"',
+            '"' + c.rollNumber + '"',
+            '"' + c.department + '"',
+            '"' + c.category + '"',
+            '"' + (c.accusedName || '') + '"',
+            '"' + c.severity + '"',
+            '"' + c.status + '"',
+            '"' + (c.description || '').replace(/"/g, '""') + '"',
+            '"' + (c.punishment || '') + '"',
+            '"' + c.email + '"',
+            '"' + c.phone + '"',
+            '"' + (c.dateSubmitted || '') + '"',
+            '"' + (c.adminNotes || '').replace(/"/g, '""') + '"'
+        ];
+        rows.push(row.join(','));
+    }
+
+    var csvContent = rows.join('\n');
+    var blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    var link = document.createElement('a');
+    var today = new Date().toISOString().split('T')[0];
+    link.href = URL.createObjectURL(blob);
+    link.download = 'anniyan-complaints-' + today + '.csv';
+    link.click();
+}
+
+</script>
+</body>
+</html>
