@@ -1,199 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🔱 அன்னியன் - College Justice Portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Tiro+Tamil&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔱 அன்னியன் - College Justice Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Metal+Mania&family=Nosifer&family=Tiro+Tamil&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-    --blood:#cc0000;--dark-blood:#8b0000;--deeper:#660000;
-    --crimson:#dc143c;--fire:#ff4400;--ember:#ff3300;
-    --saffron:#ff6633;--dark-bg:#0a0000;--bone:#e0d5c5;
-    --ash:#bbb;--green:#00ff00;
+  --blood:#cc0000;--dark-blood:#8b0000;--deeper:#660000;
+  --crimson:#dc143c;--fire:#ff4400;--ember:#ff3300;
+  --saffron:#ff6633;--dark-bg:#0a0000;--bone:#e0d5c5;
+  --ash:#bbb;--green:#00ff00;
 }
 html{scroll-behavior:smooth}
-body{
-    font-family:'Tiro Tamil','Segoe UI',sans-serif;
-    background:var(--dark-bg);color:var(--bone);
-    overflow-x:hidden;min-height:100vh;
-    background-image:radial-gradient(ellipse at bottom,#1a0000 0%,#0a0000 70%);
-}
+body{font-family:'Tiro Tamil','Segoe UI',sans-serif;background:var(--dark-bg);color:var(--bone);overflow-x:hidden;min-height:100vh;background-image:radial-gradient(ellipse at bottom,#1a0000 0%,#0a0000 70%)}
 .hidden{display:none!important}
 
-/* ===== INTRO SCREEN ===== */
-#intro-screen{
-    position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;
-    background:#000;display:flex;align-items:center;justify-content:center;
-    flex-direction:column;
-}
-.intro-content{text-align:center;animation:intro-fade-in 1s ease-out}
-@keyframes intro-fade-in{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}
-
-.intro-trishul{font-size:6rem;animation:trishul-pulse 1.5s ease-in-out infinite;margin-bottom:20px}
-@keyframes trishul-pulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 10px #cc0000)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff0000) drop-shadow(0 0 60px #cc0000)}}
-
-.intro-title{
-    font-family:'Nosifer',cursive;font-size:4rem;color:var(--blood);
-    text-shadow:0 0 10px var(--blood),0 0 30px var(--crimson),0 0 60px #ff0000;
-    animation:intro-glow 2s ease-in-out infinite alternate;
-}
-@keyframes intro-glow{0%{text-shadow:0 0 10px var(--blood),0 0 20px var(--crimson)}100%{text-shadow:0 0 20px #ff0000,0 0 40px var(--blood),0 0 80px var(--crimson)}}
-
-.intro-tamil{
-    font-family:'Tiro Tamil',serif;font-size:2.5rem;color:var(--crimson);
-    text-shadow:0 0 10px var(--crimson);margin:10px 0 20px;
-}
-.intro-verse{
-    font-family:'Tiro Tamil',serif;font-size:1.1rem;color:var(--ember);
-    max-width:600px;line-height:2;margin:0 auto 10px;
-    opacity:0;animation:verse-appear 1s ease-out 1s forwards;
-}
-.intro-verse-en{
-    font-size:.9rem;color:#888;font-style:italic;
-    opacity:0;animation:verse-appear 1s ease-out 1.5s forwards;
-    margin-bottom:30px;
-}
-@keyframes verse-appear{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
-
-.intro-tagline{
-    font-family:'Creepster',cursive;font-size:1.3rem;color:var(--fire);
-    letter-spacing:3px;margin-bottom:30px;
-    opacity:0;animation:verse-appear 1s ease-out 2s forwards;
-}
-
-.skip-btn{
-    padding:12px 30px;font-family:'Creepster',cursive;font-size:1rem;
-    color:#fff;background:transparent;border:2px solid var(--blood);
-    border-radius:8px;cursor:pointer;transition:all .3s;
-    opacity:0;animation:verse-appear 1s ease-out 2.5s forwards;
-}
+/* INTRO */
+#intro-screen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:99999;background:#000;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.intro-content{text-align:center;animation:introFade 1s ease-out}
+@keyframes introFade{0%{opacity:0;transform:scale(.8)}100%{opacity:1;transform:scale(1)}}
+.intro-trishul{font-size:6rem;animation:tPulse 1.5s ease-in-out infinite;margin-bottom:20px}
+@keyframes tPulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 10px #cc0000)}50%{transform:scale(1.1);filter:drop-shadow(0 0 30px #ff0000) drop-shadow(0 0 60px #cc0000)}}
+.intro-title{font-family:'Nosifer',cursive;font-size:4rem;color:var(--blood);text-shadow:0 0 10px var(--blood),0 0 30px var(--crimson),0 0 60px #ff0000;animation:iGlow 2s ease-in-out infinite alternate}
+@keyframes iGlow{0%{text-shadow:0 0 10px var(--blood),0 0 20px var(--crimson)}100%{text-shadow:0 0 20px #ff0000,0 0 40px var(--blood),0 0 80px var(--crimson)}}
+.intro-tamil{font-family:'Tiro Tamil',serif;font-size:2.5rem;color:var(--crimson);text-shadow:0 0 10px var(--crimson);margin:10px 0 20px}
+.intro-verse{font-family:'Tiro Tamil',serif;font-size:1.1rem;color:var(--ember);max-width:600px;line-height:2;margin:0 auto 10px;opacity:0;animation:vAppear 1s ease-out 1s forwards}
+.intro-verse-en{font-size:.9rem;color:#888;font-style:italic;opacity:0;animation:vAppear 1s ease-out 1.5s forwards;margin-bottom:30px}
+@keyframes vAppear{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
+.intro-tagline{font-family:'Creepster',cursive;font-size:1.3rem;color:var(--fire);letter-spacing:3px;margin-bottom:30px;opacity:0;animation:vAppear 1s ease-out 2s forwards}
+.skip-btn{padding:12px 30px;font-family:'Creepster',cursive;font-size:1rem;color:#fff;background:transparent;border:2px solid var(--blood);border-radius:8px;cursor:pointer;transition:all .3s;opacity:0;animation:vAppear 1s ease-out 2.5s forwards}
 .skip-btn:hover{background:var(--blood);box-shadow:0 0 20px rgba(204,0,0,.5)}
 
-/* ===== PARTICLES ===== */
+/* PARTICLES */
 #particles-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden}
-.particle{position:absolute;border-radius:50%;animation:float-up linear infinite;opacity:0}
-@keyframes float-up{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.particle{position:absolute;border-radius:50%;animation:floatUp linear infinite;opacity:0}
+@keyframes floatUp{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:.5}100%{transform:translateY(-10vh) scale(1);opacity:0}}
 
-/* ===== LIGHTNING ===== */
+/* LIGHTNING */
 #lightning-flash{position:fixed;top:0;left:0;width:100%;height:100%;background:#fff;opacity:0;pointer-events:none;z-index:9998}
-.lightning-active{animation:lightning .3s ease-out}
-@keyframes lightning{0%,100%{opacity:0}10%{opacity:.4}20%{opacity:0}30%{opacity:.6}40%{opacity:0}}
+.lightning-active{animation:lFlash .3s ease-out}
+@keyframes lFlash{0%,100%{opacity:0}10%{opacity:.4}20%{opacity:0}30%{opacity:.6}40%{opacity:0}}
 
-/* ===== GATE ===== */
-#gate-screen{
-    position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;
-    background:radial-gradient(ellipse at center,#1a0000 0%,#050000 60%,#000 100%);
-}
-.gate-left,.gate-right{
-    position:absolute;top:0;width:50%;height:100%;
-    background:linear-gradient(135deg,#1a0808 0%,#0a0000 50%,#1a0808 100%);
-    border:3px solid #440000;display:flex;align-items:center;justify-content:center;
-    transition:transform 2.5s cubic-bezier(.25,.46,.45,.94);z-index:2;
-    box-shadow:inset 0 0 60px rgba(204,0,0,.15),0 0 30px rgba(139,0,0,.2);
-}
-.gate-left{left:0;border-right:4px solid var(--blood)}
-.gate-right{right:0;border-left:4px solid var(--blood)}
-.gate-left.open{transform:translateX(-100%)}
-.gate-right.open{transform:translateX(100%)}
-.gate-design{display:flex;flex-direction:column;align-items:center;gap:25px;font-size:3rem;animation:gate-glow 2s ease-in-out infinite alternate}
-@keyframes gate-glow{0%{filter:brightness(.5) drop-shadow(0 0 5px #cc0000)}100%{filter:brightness(1.3) drop-shadow(0 0 15px #ff0000)}}
-
+/* GATE */
+#gate-screen{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;background:radial-gradient(ellipse at center,#1a0000 0%,#050000 60%,#000 100%)}
+.gate-left,.gate-right{position:absolute;top:0;width:50%;height:100%;background:linear-gradient(135deg,#1a0808,#0a0000,#1a0808);border:3px solid #440000;display:flex;align-items:center;justify-content:center;transition:transform 2.5s cubic-bezier(.25,.46,.45,.94);z-index:2;box-shadow:inset 0 0 60px rgba(204,0,0,.15)}
+.gate-left{left:0;border-right:4px solid var(--blood)}.gate-right{right:0;border-left:4px solid var(--blood)}
+.gate-left.open{transform:translateX(-100%)}.gate-right.open{transform:translateX(100%)}
+.gate-design{display:flex;flex-direction:column;align-items:center;gap:25px;font-size:3rem;animation:gGlow 2s ease-in-out infinite alternate}
+@keyframes gGlow{0%{filter:brightness(.5) drop-shadow(0 0 5px #cc0000)}100%{filter:brightness(1.3) drop-shadow(0 0 15px #ff0000)}}
 .gate-text{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:10;text-align:center;padding:20px}
-.gate-title{
-    font-family:'Nosifer',cursive;font-size:3.5rem;color:var(--blood);
-    text-shadow:0 0 10px var(--blood),0 0 20px var(--crimson),0 0 40px #ff0000,0 0 80px var(--blood);
-    animation:title-flicker 3s ease-in-out infinite;margin-bottom:5px;
-}
+.gate-title{font-family:'Nosifer',cursive;font-size:3.5rem;color:var(--blood);text-shadow:0 0 10px var(--blood),0 0 20px var(--crimson),0 0 40px #ff0000;animation:tFlicker 3s ease-in-out infinite;margin-bottom:5px}
 .gate-title-tamil{font-family:'Tiro Tamil',serif;font-size:2.2rem;color:var(--crimson);text-shadow:0 0 10px var(--crimson);margin-bottom:20px}
-@keyframes title-flicker{0%,100%{opacity:1}50%{opacity:.8}52%{opacity:1}}
-.gate-subtitle{font-family:'Tiro Tamil',serif;font-size:1.2rem;color:var(--ember);margin-bottom:30px;letter-spacing:2px}
-.gate-verse{
-    font-family:'Tiro Tamil',serif;font-size:.95rem;color:var(--saffron);
-    margin-top:20px;font-style:italic;max-width:500px;line-height:1.8;
-    border:1px solid rgba(204,0,0,.3);border-radius:10px;padding:15px;background:rgba(0,0,0,.6);
-}
+@keyframes tFlicker{0%,100%{opacity:1}50%{opacity:.8}52%{opacity:1}}
+.gate-subtitle{font-family:'Tiro Tamil',serif;font-size:1.2rem;color:var(--ember);margin-bottom:30px}
+.gate-verse{font-family:'Tiro Tamil',serif;font-size:.95rem;color:var(--saffron);margin-top:20px;font-style:italic;max-width:500px;line-height:1.8;border:1px solid rgba(204,0,0,.3);border-radius:10px;padding:15px;background:rgba(0,0,0,.6)}
 
-/* ===== BUTTONS ===== */
-.btn{
-    padding:15px 35px;font-size:1.1rem;font-family:'Creepster',cursive;
-    font-weight:bold;color:#fff;
-    background:linear-gradient(135deg,var(--deeper),var(--blood),var(--crimson));
-    border:2px solid var(--blood);border-radius:10px;cursor:pointer;
-    transition:all .3s;text-transform:uppercase;letter-spacing:2px;
-    position:relative;overflow:hidden;
-    box-shadow:0 0 15px rgba(204,0,0,.4),inset 0 0 15px rgba(139,0,0,.2);
-}
-.btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(204,0,0,.6),0 0 60px rgba(139,0,0,.3);border-color:#ff0000}
+/* BUTTONS */
+.btn{padding:15px 35px;font-size:1.1rem;font-family:'Creepster',cursive;font-weight:bold;color:#fff;background:linear-gradient(135deg,var(--deeper),var(--blood),var(--crimson));border:2px solid var(--blood);border-radius:10px;cursor:pointer;transition:all .3s;text-transform:uppercase;letter-spacing:2px;box-shadow:0 0 15px rgba(204,0,0,.4),inset 0 0 15px rgba(139,0,0,.2)}
+.btn:hover{transform:scale(1.05);box-shadow:0 0 30px rgba(204,0,0,.6);border-color:#ff0000}
 .btn:active{transform:scale(.95)}
-.btn.secondary{background:linear-gradient(135deg,#222,#444);border-color:#555;box-shadow:0 0 10px rgba(80,80,80,.3)}
-.btn.secondary:hover{box-shadow:0 0 20px rgba(120,120,120,.4)}
-.btn.pulse{animation:btn-pulse 2s ease-in-out infinite}
-@keyframes btn-pulse{0%,100%{box-shadow:0 0 15px rgba(204,0,0,.4)}50%{box-shadow:0 0 30px rgba(204,0,0,.8),0 0 60px rgba(139,0,0,.4)}}
-.btn.green{background:linear-gradient(135deg,#004400,#00aa00,#00dd00)!important;border-color:#00ff00!important;box-shadow:0 0 15px rgba(0,255,0,.4)!important}
-.btn.green:hover{box-shadow:0 0 30px rgba(0,255,0,.6)!important}
+.btn-sec{background:linear-gradient(135deg,#222,#444);border-color:#555;box-shadow:0 0 10px rgba(80,80,80,.3)}
+.btn-pulse{animation:bPulse 2s ease-in-out infinite}
+@keyframes bPulse{0%,100%{box-shadow:0 0 15px rgba(204,0,0,.4)}50%{box-shadow:0 0 30px rgba(204,0,0,.8),0 0 60px rgba(139,0,0,.4)}}
+.btn-green{background:linear-gradient(135deg,#004400,#00aa00,#00dd00)!important;border-color:#00ff00!important;box-shadow:0 0 15px rgba(0,255,0,.4)!important}
 
-/* ===== NAV ===== */
-.nav{
-    position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;
-    padding:12px 25px;
-    background:linear-gradient(180deg,rgba(15,0,0,.98),rgba(10,0,0,.95));
-    border-bottom:2px solid var(--dark-blood);
-    box-shadow:0 5px 20px rgba(204,0,0,.2);backdrop-filter:blur(10px);
-}
+/* NAV */
+.nav{position:sticky;top:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:12px 25px;background:linear-gradient(180deg,rgba(15,0,0,.98),rgba(10,0,0,.95));border-bottom:2px solid var(--dark-blood);box-shadow:0 5px 20px rgba(204,0,0,.2);backdrop-filter:blur(10px)}
 .nav-brand{display:flex;align-items:center;gap:10px;font-family:'Nosifer',cursive;font-size:1.2rem;color:var(--blood);text-shadow:0 0 10px var(--blood)}
-.nav-icon{font-size:1.5rem;animation:icon-spin 3s ease-in-out infinite}
-@keyframes icon-spin{0%,100%{transform:rotate(0)}50%{transform:rotate(10deg)}}
+.nav-icon{font-size:1.5rem;animation:nSpin 3s ease-in-out infinite}
+@keyframes nSpin{0%,100%{transform:rotate(0)}50%{transform:rotate(10deg)}}
 .nav-links{display:flex;gap:5px}
 .nav-link{color:var(--ash);text-decoration:none;padding:10px 16px;border-radius:8px;font-family:'Creepster',cursive;font-size:1rem;transition:all .3s;position:relative}
 .nav-link::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:var(--blood);transition:all .3s;transform:translateX(-50%)}
 .nav-link:hover,.nav-link.active{color:var(--blood);background:rgba(204,0,0,.1)}
 .nav-link:hover::after,.nav-link.active::after{width:80%}
 .admin-link{color:var(--green)!important;border:1px solid var(--green)}
-.admin-link:hover{background:rgba(0,255,0,.1)!important}
 .hamburger{display:none;font-size:2rem;cursor:pointer;color:var(--blood)}
 .mobile-nav{position:fixed;top:60px;left:0;width:100%;background:rgba(10,0,0,.98);border-bottom:2px solid var(--dark-blood);z-index:999;display:flex;flex-direction:column;padding:10px 0}
 .mobile-nav a{color:var(--bone);text-decoration:none;padding:15px 30px;font-family:'Creepster',cursive;font-size:1.1rem;border-bottom:1px solid rgba(204,0,0,.2);transition:all .3s}
-.mobile-nav a:hover{background:rgba(204,0,0,.1);color:var(--blood);padding-left:40px}
+.mobile-nav a:hover{background:rgba(204,0,0,.1);color:var(--blood)}
 
-/* ===== HERO ===== */
-.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;position:relative}
+/* HERO */
+.hero{min-height:90vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
 
-/* ===== ANNIYAN CHARACTER ===== */
+/* ========================================= */
+/* ANNIYAN CHARACTER - IMAGE VERSION         */
+/* ========================================= */
 .anniyan-box{display:flex;align-items:flex-start;gap:25px;margin-bottom:40px;flex-wrap:wrap;justify-content:center}
 .anniyan-char{position:relative;cursor:pointer;transition:transform .3s}
 .anniyan-char:hover{transform:scale(1.05)}
-.anniyan-body{position:relative;width:180px;height:220px}
-.anniyan-head{
-    width:110px;height:120px;
-    background:radial-gradient(circle at 40% 35%,#d4a574,#c68642,#8d5524);
-    border-radius:55px 55px 50px 50px;position:absolute;top:15px;left:35px;
-    box-shadow:0 0 20px rgba(204,0,0,.2);z-index:2;
+
+.anniyan-img{
+  width:280px;
+  height:350px;
+  object-fit:cover;
+  border-radius:20px;
+  border:3px solid var(--dark-blood);
+  box-shadow:
+    0 0 30px rgba(204,0,0,.4),
+    0 0 60px rgba(204,0,0,.2),
+    inset 0 0 30px rgba(0,0,0,.3);
+  filter:saturate(1.2) contrast(1.1);
+  animation:imgGlow 3s ease-in-out infinite alternate;
+  transition:all .3s;
 }
-.vibhuti{position:absolute;top:20px;left:50%;transform:translateX(-50%);z-index:3}
-.vibhuti-line{width:40px;height:3px;background:#fff;margin:3px 0;border-radius:2px;opacity:.9}
-.tilak{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:8px;height:15px;background:var(--blood);border-radius:50%;z-index:4}
-.anniyan-eyes{display:flex;gap:22px;justify-content:center;padding-top:40px;position:relative;z-index:3}
-.a-eye{width:20px;height:18px;background:#ff6666;border-radius:50%;position:relative;box-shadow:0 0 15px #ff0000;animation:angry-eyes 1s ease-in-out infinite alternate}
-@keyframes angry-eyes{0%{box-shadow:0 0 10px #ff0000}100%{box-shadow:0 0 25px #ff0000,0 0 40px #cc0000}}
-.a-pupil{width:10px;height:12px;background:#000;border-radius:50%;position:absolute;top:3px;left:5px}
-.eyebrow{position:absolute;top:35px;width:25px;height:4px;background:#1a1a1a;border-radius:2px;z-index:4}
-.eyebrow-l{left:22px;transform:rotate(15deg)}.eyebrow-r{right:22px;transform:rotate(-15deg)}
-.anniyan-mouth{width:35px;height:8px;background:var(--dark-blood);border-radius:0 0 15px 15px;margin:12px auto 0;position:relative;z-index:3;border:1px solid #5a0000}
-.anniyan-hair{position:absolute;top:0;left:30px;width:120px;height:50px;background:linear-gradient(180deg,#0a0a0a,#1a1a1a);border-radius:60px 60px 0 0;z-index:1}
-.rudraksha{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);font-size:1.5rem;z-index:3}
-.anniyan-robe{position:absolute;bottom:0;left:25px;width:130px;height:90px;background:linear-gradient(180deg,var(--dark-blood),var(--deeper),#3a0000);clip-path:polygon(15% 0%,85% 0%,100% 100%,0% 100%);border:1px solid #aa0000}
-.trishul{position:absolute;right:-25px;top:10px;font-size:3.5rem;animation:trishul-glow 2s ease-in-out infinite alternate;z-index:5}
-@keyframes trishul-glow{0%{filter:brightness(.8) drop-shadow(0 0 5px var(--blood))}100%{filter:brightness(1.3) drop-shadow(0 0 20px #ff0000)}}
+.anniyan-char:hover .anniyan-img{
+  box-shadow:
+    0 0 40px rgba(204,0,0,.6),
+    0 0 80px rgba(204,0,0,.3),
+    0 0 120px rgba(139,0,0,.2);
+  filter:saturate(1.4) contrast(1.2) brightness(1.1);
+}
+@keyframes imgGlow{
+  0%{box-shadow:0 0 20px rgba(204,0,0,.3),0 0 40px rgba(204,0,0,.15);filter:saturate(1.1) contrast(1.1)}
+  100%{box-shadow:0 0 35px rgba(204,0,0,.5),0 0 70px rgba(204,0,0,.25),0 0 100px rgba(139,0,0,.15);filter:saturate(1.3) contrast(1.15) brightness(1.05)}
+}
+
+/* Trishul overlay on image */
+.img-trishul{
+  position:absolute;
+  right:-20px;
+  top:-10px;
+  font-size:3.5rem;
+  z-index:15;
+  animation:trGlow 2s ease-in-out infinite alternate;
+  filter:drop-shadow(0 0 5px var(--blood));
+}
+@keyframes trGlow{0%{filter:brightness(.8) drop-shadow(0 0 5px var(--blood))}100%{filter:brightness(1.4) drop-shadow(0 0 25px #ff0000) drop-shadow(0 0 50px rgba(204,0,0,.3))}}
+
+/* Fire effect at bottom of image */
+.img-fire{
+  position:absolute;
+  bottom:-10px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:1.5rem;
+  letter-spacing:5px;
+  opacity:.8;
+  animation:fireFlicker 1.5s ease-in-out infinite;
+}
+@keyframes fireFlicker{0%,100%{opacity:.6;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}}
 
 /* SPEECH */
-.speech{
-    background:linear-gradient(135deg,#1a0000,#2a0500);
-    border:2px solid var(--dark-blood);border-radius:20px;
-    padding:20px 25px;max-width:420px;position:relative;
-    box-shadow:0 0 20px rgba(204,0,0,.2);
-}
+.speech{background:linear-gradient(135deg,#1a0000,#2a0500);border:2px solid var(--dark-blood);border-radius:20px;padding:20px 25px;max-width:420px;position:relative;box-shadow:0 0 20px rgba(204,0,0,.2)}
 .speech::before{content:'';position:absolute;left:-15px;top:30px;width:0;height:0;border-right:15px solid var(--dark-blood);border-top:10px solid transparent;border-bottom:10px solid transparent}
 .speech p{font-family:'Tiro Tamil',serif;font-size:1.05rem;color:var(--ember);line-height:1.8;transition:opacity .3s}
 .speech .en{font-size:.9rem;color:#999;margin-top:8px;font-style:italic}
@@ -202,22 +153,12 @@ body{
 .hero-content{text-align:center;max-width:800px}
 .glitch{font-family:'Nosifer',cursive;font-size:3rem;color:var(--blood);position:relative;text-shadow:0 0 10px var(--blood),0 0 20px var(--crimson);animation:glitch 3s infinite}
 @keyframes glitch{0%,90%,100%{transform:translate(0)}91%{transform:translate(-2px,1px)}93%{transform:translate(1px,-2px)}}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;width:100%}
-.glitch::before{color:#f00;animation:g1 2s infinite;clip-path:inset(0 0 70% 0)}
-.glitch::after{color:#900;animation:g2 2s infinite;clip-path:inset(70% 0 0 0)}
-@keyframes g1{0%,90%,100%{transform:translate(0)}95%{transform:translate(3px,-3px)}}
-@keyframes g2{0%,90%,100%{transform:translate(0)}95%{transform:translate(-3px,3px)}}
-.sub-title{font-family:'Tiro Tamil',serif;font-size:1.4rem;color:var(--crimson);margin:10px 0 20px;letter-spacing:2px}
+.sub-title{font-family:'Tiro Tamil',serif;font-size:1.4rem;color:var(--crimson);margin:10px 0 20px}
 .hero-desc{font-size:1rem;color:var(--ash);margin-bottom:30px;line-height:1.8}
 
 /* STATS */
 .stats{display:flex;gap:25px;margin:30px 0;flex-wrap:wrap;justify-content:center}
-.stat{
-    background:linear-gradient(135deg,#1a0000,#200505);
-    border:1px solid var(--dark-blood);border-radius:15px;
-    padding:25px 30px;text-align:center;min-width:150px;
-    transition:all .3s;box-shadow:0 0 10px rgba(204,0,0,.1);
-}
+.stat{background:linear-gradient(135deg,#1a0000,#200505);border:1px solid var(--dark-blood);border-radius:15px;padding:25px 30px;text-align:center;min-width:150px;transition:all .3s}
 .stat:hover{transform:translateY(-5px);box-shadow:0 5px 25px rgba(204,0,0,.3);border-color:var(--blood)}
 .stat-icon{font-size:2.5rem;margin-bottom:10px}
 .stat-num{font-family:'Nosifer',cursive;font-size:2.2rem;color:var(--blood);text-shadow:0 0 10px var(--blood)}
@@ -232,42 +173,26 @@ body{
 /* FORM */
 .form-wrap{max-width:700px;margin:0 auto}
 .questioner{display:flex;align-items:flex-start;gap:15px;margin-bottom:30px}
-.q-icon{font-size:3.5rem;animation:q-bounce 2s ease-in-out infinite}
-@keyframes q-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.q-bubble{
-    background:linear-gradient(135deg,#1a0000,#2a0500);
-    border:2px solid var(--dark-blood);border-radius:15px;
-    padding:18px;flex:1;position:relative;box-shadow:0 0 15px rgba(204,0,0,.15);
-}
+.q-icon{font-size:3.5rem;animation:qB 2s ease-in-out infinite}
+@keyframes qB{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.q-bubble{background:linear-gradient(135deg,#1a0000,#2a0500);border:2px solid var(--dark-blood);border-radius:15px;padding:18px;flex:1;position:relative;box-shadow:0 0 15px rgba(204,0,0,.15)}
 .q-bubble::before{content:'';position:absolute;left:-12px;top:18px;border-right:12px solid var(--dark-blood);border-top:8px solid transparent;border-bottom:8px solid transparent}
 .q-bubble p{font-family:'Tiro Tamil',serif;font-size:1.05rem;color:var(--ember);line-height:1.6}
-
-.form-box{
-    background:linear-gradient(135deg,#0d0000,#1a0505,#0d0000);
-    border:2px solid var(--dark-blood);border-radius:20px;padding:30px;
-    box-shadow:0 0 30px rgba(204,0,0,.1),inset 0 0 30px rgba(139,0,0,.05);
-}
+.form-box{background:linear-gradient(135deg,#0d0000,#1a0505,#0d0000);border:2px solid var(--dark-blood);border-radius:20px;padding:30px;box-shadow:0 0 30px rgba(204,0,0,.1)}
 .pbar{height:28px;background:#1a0000;border-radius:14px;margin-bottom:30px;position:relative;overflow:hidden;border:1px solid var(--dark-blood)}
 .pfill{height:100%;width:0%;background:linear-gradient(90deg,var(--deeper),var(--blood),var(--crimson),var(--fire));border-radius:14px;transition:width .5s;position:relative;box-shadow:0 0 15px var(--blood)}
 .pfill::after{content:'🔱';position:absolute;right:-5px;top:50%;transform:translateY(-50%);font-size:1.3rem}
 .ptext{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Creepster',cursive;font-size:.85rem;color:#fff;z-index:1;text-shadow:0 0 5px #000}
-
-.fstep{display:none;animation:step-in .5s ease-out}
-.fstep.active{display:block}
-@keyframes step-in{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
+.fstep{display:none;animation:sIn .5s ease-out}.fstep.active{display:block}
+@keyframes sIn{0%{opacity:0;transform:translateX(30px)}100%{opacity:1;transform:translateX(0)}}
 .fstep-c{text-align:center}
-.big-icon{font-size:5rem;margin-bottom:20px;animation:q-bounce 1.5s ease-in-out infinite}
+.big-icon{font-size:5rem;margin-bottom:20px;animation:qB 1.5s ease-in-out infinite}
 .fstep-c h3{font-family:'Metal Mania',cursive;font-size:1.6rem;color:var(--crimson);margin-bottom:15px}
-.fstep-c>p{color:var(--ash);margin-bottom:20px;font-size:1rem}
+.fstep-c>p{color:var(--ash);margin-bottom:20px}
 .flabel{display:block;font-family:'Tiro Tamil',serif;font-size:1.1rem;color:var(--crimson);margin-bottom:10px;text-align:left}
-.finput{
-    width:100%;padding:14px 18px;font-size:1rem;color:var(--bone);
-    background:linear-gradient(135deg,#0a0000,#150505);
-    border:2px solid #440000;border-radius:10px;outline:none;
-    transition:all .3s;margin-bottom:18px;font-family:inherit;
-}
+.finput{width:100%;padding:14px 18px;font-size:1rem;color:var(--bone);background:linear-gradient(135deg,#0a0000,#150505);border:2px solid #440000;border-radius:10px;outline:none;transition:all .3s;margin-bottom:18px;font-family:inherit}
 .finput::placeholder{color:#555;font-style:italic}
-.finput:focus{border-color:var(--blood);box-shadow:0 0 15px rgba(204,0,0,.3);background:linear-gradient(135deg,#0d0000,#1a0808)}
+.finput:focus{border-color:var(--blood);box-shadow:0 0 15px rgba(204,0,0,.3)}
 .fselect{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M0 0l6 8 6-8z' fill='%23cc0000'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;padding-right:40px}
 .fselect option{background:#1a0000;color:var(--bone)}
 .ftextarea{resize:vertical;min-height:120px}
@@ -284,9 +209,8 @@ body{
 .sev-pun{display:block;font-size:.75rem;color:var(--crimson);margin-top:5px;font-style:italic}
 .sev-opt input:checked+.sev-card.low{border-color:var(--fire);box-shadow:0 0 20px rgba(255,68,0,.3);background:linear-gradient(135deg,#1a0800,#2a1000)}
 .sev-opt input:checked+.sev-card.med{border-color:var(--crimson);box-shadow:0 0 20px rgba(220,20,60,.4);background:linear-gradient(135deg,#1a0500,#2a0a00)}
-.sev-opt input:checked+.sev-card.high{border-color:#ff0000;box-shadow:0 0 20px rgba(255,0,0,.5);background:linear-gradient(135deg,#1a0000,#2a0000);animation:high-sev 1s ease-in-out infinite}
-@keyframes high-sev{0%,100%{box-shadow:0 0 20px rgba(255,0,0,.4)}50%{box-shadow:0 0 40px rgba(255,0,0,.8)}}
-
+.sev-opt input:checked+.sev-card.high{border-color:#ff0000;box-shadow:0 0 20px rgba(255,0,0,.5);background:linear-gradient(135deg,#1a0000,#2a0000);animation:hSev 1s ease-in-out infinite}
+@keyframes hSev{0%,100%{box-shadow:0 0 20px rgba(255,0,0,.4)}50%{box-shadow:0 0 40px rgba(255,0,0,.8)}}
 .step-btns{display:flex;gap:15px;justify-content:center;margin-top:25px;flex-wrap:wrap}
 
 /* REVIEW */
@@ -294,27 +218,20 @@ body{
 .rev-box{background:#0d0000;border:1px solid #440000;border-radius:15px;padding:25px;text-align:left;margin-bottom:20px}
 .rev-item{display:flex;padding:12px 0;border-bottom:1px solid #220000}
 .rev-item:last-child{border-bottom:none}
-.rev-lbl{font-family:'Tiro Tamil',serif;color:var(--crimson);min-width:130px;font-size:1rem;font-weight:bold}
+.rev-lbl{font-family:'Tiro Tamil',serif;color:var(--crimson);min-width:130px;font-weight:bold}
 .rev-val{color:var(--bone);flex:1}
-
-/* CHECKBOX */
 .chk-wrap{margin:20px 0}
 .chk-lbl{display:flex;align-items:center;gap:10px;cursor:pointer;font-size:.95rem;color:var(--ash);justify-content:center;font-family:'Tiro Tamil',serif}
 .chk-lbl input{display:none}
 .chk-mark{font-size:1.5rem;opacity:.3;transition:all .3s}
-.chk-lbl input:checked+.chk-mark{opacity:1;animation:icon-spin 1s ease-in-out infinite}
+.chk-lbl input:checked+.chk-mark{opacity:1;animation:nSpin 1s ease-in-out infinite}
 
 /* MODAL */
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;z-index:10000;padding:20px}
-.modal-box{
-    background:linear-gradient(135deg,#1a0000,#0d0505);
-    border:2px solid var(--blood);border-radius:20px;
-    padding:35px;max-width:500px;width:100%;text-align:center;
-    animation:modal-in .5s ease-out;box-shadow:0 0 40px rgba(204,0,0,.4);
-}
-@keyframes modal-in{0%{opacity:0;transform:scale(.5) rotate(10deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
-.modal-ico{font-size:5rem;margin-bottom:20px;animation:ico-bounce 1s ease-in-out infinite}
-@keyframes ico-bounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+.modal-box{background:linear-gradient(135deg,#1a0000,#0d0505);border:2px solid var(--blood);border-radius:20px;padding:35px;max-width:500px;width:100%;text-align:center;animation:mIn .5s ease-out;box-shadow:0 0 40px rgba(204,0,0,.4)}
+@keyframes mIn{0%{opacity:0;transform:scale(.5)}100%{opacity:1;transform:scale(1)}}
+.modal-ico{font-size:5rem;margin-bottom:20px;animation:mBounce 1s ease-in-out infinite}
+@keyframes mBounce{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
 .modal-box h2{font-family:'Tiro Tamil',serif;font-size:1.4rem;color:var(--crimson);margin-bottom:10px}
 .modal-box p{color:var(--ash);margin-bottom:10px;font-family:'Tiro Tamil',serif}
 .punishment-box{color:var(--blood);font-family:'Tiro Tamil',serif;font-size:.95rem;margin:15px 0;padding:12px;border:1px solid var(--blood);border-radius:8px;background:rgba(204,0,0,.08);line-height:1.8}
@@ -326,12 +243,7 @@ body{
 .track-wrap{max-width:600px;margin:0 auto;text-align:center}
 .track-form{display:flex;gap:15px;margin:30px 0;flex-wrap:wrap;justify-content:center}
 .track-form .finput{flex:1;min-width:250px;margin-bottom:0}
-.track-res{
-    background:linear-gradient(135deg,#0d0000,#1a0505);
-    border:2px solid var(--dark-blood);border-radius:15px;
-    padding:30px;text-align:left;animation:step-in .5s ease-out;
-    box-shadow:0 0 20px rgba(204,0,0,.15);
-}
+.track-res{background:linear-gradient(135deg,#0d0000,#1a0505);border:2px solid var(--dark-blood);border-radius:15px;padding:30px;text-align:left;animation:sIn .5s ease-out}
 .track-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
 .track-tid{font-family:'Nosifer',cursive;font-size:1.3rem;color:var(--blood)}
 .badge{padding:6px 16px;border-radius:20px;font-family:'Creepster',cursive;font-size:.85rem;font-weight:bold;display:inline-block}
@@ -345,16 +257,11 @@ body{
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;max-width:1000px;margin:0 auto 40px;padding:0 20px}
-.about-card{
-    background:linear-gradient(135deg,#0d0000,#1a0505);
-    border:1px solid var(--dark-blood);border-radius:15px;padding:30px;
-    text-align:center;transition:all .3s;box-shadow:0 0 10px rgba(204,0,0,.08);
-}
+.about-card{background:linear-gradient(135deg,#0d0000,#1a0505);border:1px solid var(--dark-blood);border-radius:15px;padding:30px;text-align:center;transition:all .3s}
 .about-card:hover{transform:translateY(-5px);box-shadow:0 5px 25px rgba(204,0,0,.25);border-color:var(--blood)}
 .about-card .ico{font-size:3rem;margin-bottom:15px}
 .about-card h3{font-family:'Creepster',cursive;font-size:1.2rem;color:var(--blood);margin-bottom:10px}
 .about-card p{color:var(--ash);line-height:1.6;font-size:.95rem}
-
 .garuda-sec{max-width:800px;margin:30px auto;text-align:center;padding:0 20px}
 .garuda-title{font-family:'Nosifer',cursive;font-size:1.3rem;color:var(--blood);margin-bottom:20px;text-shadow:0 0 10px var(--blood)}
 .garuda-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
@@ -368,589 +275,263 @@ body{
 .footer-txt{color:#555;font-size:.9rem;margin:5px 0;font-family:'Tiro Tamil',serif}
 .footer-verse{font-family:'Tiro Tamil',serif;color:var(--crimson);font-style:italic;font-size:.85rem;margin-top:15px;max-width:500px;margin-left:auto;margin-right:auto}
 
-/* LOADING */
+/* LOADER */
 .loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);display:flex;align-items:center;justify-content:center;z-index:99999}
 .loader-c{text-align:center}
-.loader-spin{font-size:5rem;color:var(--blood);animation:spin 2s linear infinite;text-shadow:0 0 20px var(--blood)}
-@keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.loader-spin{font-size:5rem;color:var(--blood);animation:spinA 2s linear infinite;text-shadow:0 0 20px var(--blood)}
+@keyframes spinA{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
 .loader-c p{font-family:'Tiro Tamil',serif;color:var(--crimson);font-size:1.1rem;margin-top:15px}
 
 @keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%,70%,90%{transform:translateX(-5px)}20%,40%,60%,80%{transform:translateX(5px)}}
 
 @media(max-width:768px){
-    .gate-title{font-size:2rem}.gate-title-tamil{font-size:1.5rem}
-    .intro-title{font-size:2.5rem}.intro-tamil{font-size:1.8rem}
-    .nav-links{display:none}.hamburger{display:block}
-    .glitch{font-size:2rem}.sub-title{font-size:1.1rem}
-    .sec-title{font-size:1.5rem}
-    .anniyan-box{flex-direction:column;align-items:center}
-    .speech{max-width:100%}
-    .speech::before{left:50%;top:-12px;transform:translateX(-50%) rotate(90deg)}
-    .sev-sel{flex-direction:column}.sev-opt{min-width:100%}
-    .stats{flex-direction:column;align-items:center}.stat{width:100%;max-width:250px}
-    .track-form{flex-direction:column}.track-form .finput{min-width:100%}
-    .modal-box{padding:25px}
-    .rev-item,.track-row{flex-direction:column;gap:5px}
+  .gate-title{font-size:2rem}.intro-title{font-size:2.5rem}.intro-tamil{font-size:1.8rem}
+  .nav-links{display:none}.hamburger{display:block}
+  .glitch{font-size:2rem}.sec-title{font-size:1.5rem}
+  .anniyan-box{flex-direction:column;align-items:center}
+  .speech{max-width:100%}.speech::before{left:50%;top:-12px;transform:translateX(-50%) rotate(90deg)}
+  .sev-sel{flex-direction:column}.sev-opt{min-width:100%}
+  .stats{flex-direction:column;align-items:center}.stat{width:100%;max-width:250px}
+  .track-form{flex-direction:column}.track-form .finput{min-width:100%}
+  .modal-box{padding:25px}.rev-item,.track-row{flex-direction:column;gap:5px}
+  .anniyan-img{width:220px;height:280px}
 }
 @media(max-width:480px){
-    .gate-title{font-size:1.5rem}.gate-title-tamil{font-size:1.2rem}
-    .intro-title{font-size:2rem}.intro-tamil{font-size:1.3rem}
-    .glitch{font-size:1.5rem}.form-box{padding:15px}
-    .btn{padding:12px 20px;font-size:.9rem}
-    .step-btns{flex-direction:column}
-    .anniyan-body{transform:scale(.8)}
+  .gate-title{font-size:1.5rem}.intro-title{font-size:2rem}.intro-tamil{font-size:1.3rem}
+  .glitch{font-size:1.5rem}.form-box{padding:15px}
+  .btn{padding:12px 20px;font-size:.9rem}.step-btns{flex-direction:column}
+  .anniyan-img{width:180px;height:230px}
 }
-::-webkit-scrollbar{width:10px}
-::-webkit-scrollbar-track{background:#050000}
+
+::-webkit-scrollbar{width:10px}::-webkit-scrollbar-track{background:#050000}
 ::-webkit-scrollbar-thumb{background:linear-gradient(var(--dark-blood),var(--deeper));border-radius:5px}
 ::selection{background:var(--dark-blood);color:#fff}
 </style>
 </head>
 <body>
 
-    <!-- ===== INTRO SCREEN ===== -->
-    <div id="intro-screen">
-        <div class="intro-content">
-            <div class="intro-trishul">🔱</div>
-            <h1 class="intro-title">ANNIYAN</h1>
-            <p class="intro-tamil">அன்னியன்</p>
-            <p class="intro-verse">"தர்மம் எங்கே தவறுகிறதோ, அங்கே அன்னியன் வருவான்!"</p>
-            <p class="intro-verse-en">"Where dharma fails, Anniyan shall appear!"</p>
-            <p class="intro-tagline">⚖️ COLLEGE JUSTICE SYSTEM ⚖️</p>
-            <button class="skip-btn" onclick="skipIntro()">🔱 ENTER - நுழை 🔱</button>
-        </div>
+<!-- INTRO -->
+<div id="intro-screen">
+  <div class="intro-content">
+    <div class="intro-trishul">🔱</div>
+    <h1 class="intro-title">ANNIYAN</h1>
+    <p class="intro-tamil">அன்னியன்</p>
+    <p class="intro-verse">"தர்மம் எங்கே தவறுகிறதோ, அங்கே அன்னியன் வருவான்!"</p>
+    <p class="intro-verse-en">"Where dharma fails, Anniyan shall appear!"</p>
+    <p class="intro-tagline">⚖️ COLLEGE JUSTICE SYSTEM ⚖️</p>
+    <button class="skip-btn" id="skipBtn">🔱 ENTER - நுழை 🔱</button>
+  </div>
+</div>
+
+<div id="particles-container"></div>
+<div id="lightning-flash"></div>
+
+<!-- GATE -->
+<div id="gate-screen" class="hidden">
+  <div class="gate-left"><div class="gate-design"><div>🕉</div><div>⚔️</div><div>🔱</div></div></div>
+  <div class="gate-right"><div class="gate-design"><div>🕉</div><div>⚔️</div><div>🔱</div></div></div>
+  <div class="gate-text">
+    <h1 class="gate-title">ANNIYAN</h1>
+    <p class="gate-title-tamil">அன்னியன்</p>
+    <p class="gate-subtitle">College Justice Portal</p>
+    <button class="btn" id="gateBtn">🔱 திற - OPEN 🔱</button>
+    <div class="gate-verse">"குற்றவாளி தண்டிக்கப்படுவான்!"</div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main-content" class="hidden">
+  <nav class="nav">
+    <div class="nav-brand"><span class="nav-icon">🔱</span><span>ANNIYAN</span></div>
+    <div class="nav-links">
+      <a href="#" class="nav-link active" data-section="home">🏛 நீதி மன்றம்</a>
+      <a href="#" class="nav-link" data-section="complain">📜 புகார்</a>
+      <a href="#" class="nav-link" data-section="status">👁 நிலை</a>
+      <a href="#" class="nav-link" data-section="about">🔱 பற்றி</a>
+      <a href="admin.html" class="nav-link admin-link">🔐Admin</a>
     </div>
+    <div class="hamburger" id="hamBtn">☰</div>
+  </nav>
 
-    <div id="particles-container"></div>
-    <div id="lightning-flash"></div>
+  <div id="mobile-nav" class="mobile-nav hidden">
+    <a href="#" data-section="home">🏛 நீதி மன்றம்</a>
+    <a href="#" data-section="complain">📜 புகார்</a>
+    <a href="#" data-section="status">👁 நிலை</a>
+    <a href="#" data-section="about">🔱 பற்றி</a>
+    <a href="admin.html">🔐Admin</a>
+  </div>
 
-    <!-- ===== GATE ===== -->
-    <div id="gate-screen" class="hidden">
-        <div class="gate-left">
-            <div class="gate-design"><div>🕉️</div><div>⚔️</div><div>🔱</div></div>
+  <!-- HOME -->
+  <section id="home" class="section">
+    <div class="hero">
+      <div class="anniyan-box">
+
+        <!-- REPLACED: CSS puppet with actual image -->
+        <div class="anniyan-char" id="anniyan">
+          <img 
+            src="https://raw.githubusercontent.com/pprojectcentreee/hell-of-clg-secret-society/main/360_F_915550435_tV1RnNg23ltLo5cEjMxLdVkWiaOePPJK.jpg" 
+            alt="Anniyan - College Justice" 
+            class="anniyan-img"
+          >
+          <div class="img-trishul">🔱</div>
+          <div class="img-fire">🔥🔥🔥🔥🔥</div>
         </div>
-        <div class="gate-right">
-            <div class="gate-design"><div>🕉️</div><div>⚔️</div><div>🔱</div></div>
+
+        <div class="speech">
+          <p id="sp-ta">நான் அன்னியன்! அநீதிக்கு தண்டனை வழங்குவேன்! 🔱</p>
+          <p class="en" id="sp-en">I am Anniyan! I punish injustice!</p>
         </div>
-        <div class="gate-text">
-            <h1 class="gate-title">ANNIYAN</h1>
-            <p class="gate-title-tamil">அன்னியன்</p>
-            <p class="gate-subtitle">College Justice Portal - நீதி மன்றம்</p>
-            <button class="btn" onclick="openGates()">🔱 திற - OPEN GATES 🔱</button>
-            <div class="gate-verse">"குற்றவாளி தண்டிக்கப்படுவான்! கருட புராணப்படி நீதி வழங்கப்படும்!"</div>
+      </div>
+
+      <div class="hero-content">
+        <h1 class="glitch" data-text="ANNIYAN">ANNIYAN</h1>
+        <h2 class="sub-title">கல்லூரி நீதி மன்றம்</h2>
+        <p class="hero-desc">அநீதி நடக்கிறதா? அன்னியனிடம் புகார் கொடு! கருட புராணப்படி தண்டனை!</p>
+        <div class="stats">
+          <div class="stat"><div class="stat-icon">⚖️</div><div class="stat-num" id="s-total">0</div><div class="stat-lbl">மொத்தம்</div></div>
+          <div class="stat"><div class="stat-icon">🔥</div><div class="stat-num" id="s-pending">0</div><div class="stat-lbl">நிலுவை</div></div>
+          <div class="stat"><div class="stat-icon">✅</div><div class="stat-num" id="s-resolved">0</div><div class="stat-lbl">தீர்வு</div></div>
         </div>
+        <button class="btn btn-pulse" data-section="complain">🔱 புகார் அளி 🔱</button>
+      </div>
     </div>
+  </section>
 
-    <!-- ===== MAIN ===== -->
-    <div id="main-content" class="hidden">
-        <nav class="nav">
-            <div class="nav-brand"><span class="nav-icon">🔱</span><span>ANNIYAN</span></div>
-            <div class="nav-links">
-                <a href="#" class="nav-link active" onclick="showSection('home',event)">🏛️ நீதி மன்றம்</a>
-                <a href="#" class="nav-link" onclick="showSection('complain',event)">📜 புகார்</a>
-                <a href="#" class="nav-link" onclick="showSection('status',event)">👁️ நிலை</a>
-                <a href="#" class="nav-link" onclick="showSection('about',event)">🔱 பற்றி</a>
-                <a href="admin.html" class="nav-link admin-link">🔐 Admin</a>
-            </div>
-            <div class="hamburger" onclick="toggleMobile()">☰</div>
-        </nav>
-        <div id="mobile-nav" class="mobile-nav hidden">
-            <a href="#" onclick="showSection('home',event);toggleMobile()">🏛️ நீதி மன்றம்</a>
-            <a href="#" onclick="showSection('complain',event);toggleMobile()">📜 புகார் அளி</a>
-            <a href="#" onclick="showSection('status',event);toggleMobile()">👁️ நிலை பார்</a>
-            <a href="#" onclick="showSection('about',event);toggleMobile()">🔱 பற்றி</a>
-            <a href="admin.html">🔐 Admin</a>
-        </div>
+  <!-- COMPLAIN -->
+  <section id="complain" class="section hidden">
+    <div class="sec-header"><h2 class="sec-title">📜 அன்னியன் விசாரணை</h2><p class="sec-desc">கேள்விகளுக்கு பதில் சொல்!</p></div>
+    <div class="form-wrap">
+      <div class="questioner"><div class="q-icon">🔱</div><div class="q-bubble"><p id="q-text">START அழுத்து!</p></div></div>
+      <div class="form-box" id="form-box">
+        <div class="pbar"><div class="pfill" id="pfill"></div><div class="ptext" id="ptext">0/7</div></div>
+        <form id="cform">
+          <div class="fstep active" id="s0"><div class="fstep-c"><div class="big-icon">⚖️</div><h3>நீதி வேண்டுமா?</h3><p>"பொய் சொன்னால் தண்டனை உனக்கே!"</p><button type="button" class="btn" id="startBtn">⚡ தொடங்கு ⚡</button></div></div>
 
-        <!-- HOME -->
-        <section id="home" class="section">
-            <div class="hero">
-                <div class="anniyan-box">
-                    <div class="anniyan-char" id="anniyan">
-                        <div class="anniyan-body">
-                            <div class="anniyan-hair"></div>
-                            <div class="anniyan-head">
-                                <div class="vibhuti"><div class="vibhuti-line"></div><div class="vibhuti-line"></div><div class="vibhuti-line"></div></div>
-                                <div class="tilak"></div>
-                                <div class="eyebrow eyebrow-l"></div><div class="eyebrow eyebrow-r"></div>
-                                <div class="anniyan-eyes">
-                                    <div class="a-eye"><div class="a-pupil"></div></div>
-                                    <div class="a-eye"><div class="a-pupil"></div></div>
-                                </div>
-                                <div class="anniyan-mouth"></div>
-                            </div>
-                            <div class="rudraksha">📿</div>
-                            <div class="anniyan-robe"></div>
-                            <div class="trishul">🔱</div>
-                        </div>
-                    </div>
-                    <div class="speech">
-                        <p id="sp-ta">நான் அன்னியன்! இந்த கல்லூரியில் நடக்கும் அநீதிகளுக்கு தண்டனை வழங்குவேன்! 🔱</p>
-                        <p class="en" id="sp-en">I am Anniyan! I will punish every injustice in this college!</p>
-                    </div>
-                </div>
-                <div class="hero-content">
-                    <h1 class="glitch" data-text="ANNIYAN">ANNIYAN</h1>
-                    <h2 class="sub-title">கல்லூரி நீதி மன்றம் - College Justice System</h2>
-                    <p class="hero-desc">கல்லூரியில் அநீதி நடக்கிறதா? அன்னியனிடம் புகார் கொடு! கருட புராணப்படி தண்டனை வழங்கப்படும்!</p>
-                    <div class="stats">
-                        <div class="stat"><div class="stat-icon">⚖️</div><div class="stat-num" id="s-total">0</div><div class="stat-lbl">மொத்த புகார்கள்</div></div>
-                        <div class="stat"><div class="stat-icon">🔥</div><div class="stat-num" id="s-pending">0</div><div class="stat-lbl">நிலுவையில்</div></div>
-                        <div class="stat"><div class="stat-icon">✅</div><div class="stat-num" id="s-resolved">0</div><div class="stat-lbl">தீர்வு</div></div>
-                    </div>
-                    <button class="btn pulse" onclick="showSection('complain',event)">🔱 புகார் அளி - FILE COMPLAINT 🔱</button>
-                </div>
-            </div>
-        </section>
+          <div class="fstep" id="s1"><div class="fstep-c"><label class="flabel">👤 பெயர்?</label><input type="text" id="f-name" class="finput" placeholder="பெயர்..."><div class="step-btns"><button type="button" class="btn btn-sec" data-go="0">◀</button><button type="button" class="btn" data-go="2">▶ 🔱</button></div></div></div>
 
-        <!-- COMPLAIN -->
-        <section id="complain" class="section hidden">
-            <div class="sec-header">
-                <h2 class="sec-title">📜 அன்னியன் விசாரணை</h2>
-                <p class="sec-desc">Anniyan's Interrogation - கேள்விகளுக்கு பதில் சொல்!</p>
-            </div>
-            <div class="form-wrap">
-                <div class="questioner">
-                    <div class="q-icon">🔱</div>
-                    <div class="q-bubble"><p id="q-text">விசாரணை தொடங்க START அழுத்து!</p></div>
-                </div>
-                <div class="form-box" id="form-box">
-                    <div class="pbar"><div class="pfill" id="pfill"></div><div class="ptext" id="ptext">0 / 7</div></div>
-                    <form id="cform">
-                        <!-- Step 0 -->
-                        <div class="fstep active" id="s0"><div class="fstep-c">
-                            <div class="big-icon">⚖️</div>
-                            <h3>நீதி வேண்டுமா?</h3>
-                            <p>அன்னியன் 7 கேள்விகள் கேட்பான். உண்மையை மட்டும் சொல்!</p>
-                            <p style="color:var(--crimson);font-style:italic;margin-bottom:20px">"பொய் சொன்னால் கருட புராண தண்டனை உனக்கே!"</p>
-                            <button type="button" class="btn" onclick="goStep(1)">⚡ விசாரணை தொடங்கு ⚡</button>
-                        </div></div>
-                        <!-- Step 1 -->
-                        <div class="fstep" id="s1"><div class="fstep-c">
-                            <label class="flabel">👤 உன் பெயர் என்ன? (Your Name)</label>
-                            <input type="text" id="f-name" class="finput" placeholder="உன் பெயரை சொல்..." required>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(0)">◀ பின்</button><button type="button" class="btn" onclick="goStep(2)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 2 -->
-                        <div class="fstep" id="s2"><div class="fstep-c">
-                            <label class="flabel">🔢 உன் Roll Number என்ன?</label>
-                            <input type="text" id="f-roll" class="finput" placeholder="Roll number..." required>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(1)">◀ பின்</button><button type="button" class="btn" onclick="goStep(3)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 3 -->
-                        <div class="fstep" id="s3"><div class="fstep-c">
-                            <label class="flabel">🏛️ எந்த Department?</label>
-                            <select id="f-dept" class="finput fselect" required>
-                                <option value="">-- துறை தேர்வு செய் --</option>
-                                <option value="CSE">💻 CSE</option><option value="ECE">⚡ ECE</option>
-                                <option value="MECH">⚙️ MECH</option><option value="CIVIL">🏗️ CIVIL</option>
-                                <option value="EEE">🔌 EEE</option><option value="IT">🌐 IT</option>
-                                <option value="MBA">📊 MBA</option><option value="OTHER">📌 Other</option>
-                            </select>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(2)">◀ பின்</button><button type="button" class="btn" onclick="goStep(4)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 4 -->
-                        <div class="fstep" id="s4"><div class="fstep-c">
-                            <label class="flabel">⚠️ என்ன குற்றம்? (Crime Type)</label>
-                            <select id="f-cat" class="finput fselect" required>
-                                <option value="">-- குற்றம் தேர்வு செய் --</option>
-                                <option value="Academic">📚 Academic</option><option value="Infrastructure">🏚️ Infrastructure</option>
-                                <option value="Faculty">👨‍🏫 Faculty</option><option value="Hostel">🏠 Hostel</option>
-                                <option value="Canteen">🍽️ Canteen</option><option value="Transport">🚌 Transport</option>
-                                <option value="Library">📖 Library</option><option value="Lab">🔬 Lab</option>
-                                <option value="Fees">💰 Fees</option><option value="Ragging">🚫 Ragging</option>
-                                <option value="WiFi">📶 WiFi</option><option value="Corruption">💼 Corruption</option>
-                                <option value="Other">📌 Other</option>
-                            </select>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(3)">◀ பின்</button><button type="button" class="btn" onclick="goStep(5)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 5 -->
-                        <div class="fstep" id="s5"><div class="fstep-c">
-                            <label class="flabel">⚖️ குற்றத்தின் தீவிரம்?</label>
-                            <div class="sev-sel">
-                                <label class="sev-opt"><input type="radio" name="sev" value="Low"><div class="sev-card low"><span class="sev-ico">⚠️</span><span class="sev-txt">சிறு குற்றம்</span><span class="sev-desc">Minor</span><span class="sev-pun">எச்சரிக்கை</span></div></label>
-                                <label class="sev-opt"><input type="radio" name="sev" value="Medium"><div class="sev-card med"><span class="sev-ico">🔥</span><span class="sev-txt">கடும் குற்றம்</span><span class="sev-desc">Serious</span><span class="sev-pun">கும்பிபாகம்</span></div></label>
-                                <label class="sev-opt"><input type="radio" name="sev" value="High"><div class="sev-card high"><span class="sev-ico">💀</span><span class="sev-txt">மகா பாவம்</span><span class="sev-desc">Extreme!</span><span class="sev-pun">தைலபாகம்</span></div></label>
-                            </div>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(4)">◀ பின்</button><button type="button" class="btn" onclick="goStep(6)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 6 -->
-                        <div class="fstep" id="s6"><div class="fstep-c">
-                            <label class="flabel">📝 குற்றத்தை விரிவாக சொல்!</label>
-                            <textarea id="f-desc" class="finput ftextarea" rows="5" placeholder="என்ன நடந்தது? ஆதாரம் என்ன?" required></textarea>
-                            <label class="flabel">👤 குற்றவாளி யார்? (Optional)</label>
-                            <input type="text" id="f-accused" class="finput" placeholder="குற்றவாளி பெயர்">
-                            <label class="flabel">📧 Email (Optional)</label>
-                            <input type="email" id="f-email" class="finput" placeholder="email@college.edu">
-                            <label class="flabel">📱 Phone (Optional)</label>
-                            <input type="tel" id="f-phone" class="finput" placeholder="Phone number">
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(5)">◀ பின்</button><button type="button" class="btn" onclick="goStep(7)">அடுத்து 🔱</button></div>
-                        </div></div>
-                        <!-- Step 7 -->
-                        <div class="fstep" id="s7"><div class="fstep-c">
-                            <h3 class="rev-title">⚖️ உன் புகாரை சரிபார் ⚖️</h3>
-                            <div class="rev-box" id="rev-box"></div>
-                            <div class="chk-wrap"><label class="chk-lbl"><input type="checkbox" id="chk"><span class="chk-mark">🔱</span><span>நான் உண்மையே சொல்கிறேன்! 🕉️</span></label></div>
-                            <div class="step-btns"><button type="button" class="btn secondary" onclick="goStep(6)">◀ பின்</button><button type="button" class="btn green" onclick="submitForm()">🔱 புகார் அளி - SUBMIT 🔱</button></div>
-                        </div></div>
-                    </form>
-                </div>
-            </div>
-            <!-- Success Modal -->
-            <div id="modal-success" class="modal hidden">
-                <div class="modal-box">
-                    <div class="modal-ico">⚖️</div>
-                    <h2>உங்கள் புகார் பதிவு செய்யப்பட்டது!</h2>
-                    <p>Your complaint has been registered!</p>
-                    <div class="punishment-box">🔱 குற்றவாளி தண்டிக்கப்படுவான்!<br>கருட புராணப்படி தண்டனை வழங்கப்படும்!<br>நியாயம் நிலைநாட்டப்படும்! ⚖️</div>
-                    <div class="tkt-box"><p>Tracking Token:</p><h3 id="tkt-id" class="tkt-num">ANI-XXXX</h3><p class="tkt-note">இந்த token-ஐ சேமித்து வை!</p></div>
-                    <button class="btn" onclick="closeModal()">🔱 தொடர்க 🔱</button>
-                </div>
-            </div>
-        </section>
+          <div class="fstep" id="s2"><div class="fstep-c"><label class="flabel">🔢 Roll Number?</label><input type="text" id="f-roll" class="finput" placeholder="Roll..."><div class="step-btns"><button type="button" class="btn btn-sec" data-go="1">◀</button><button type="button" class="btn" data-go="3">▶ 🔱</button></div></div></div>
 
-        <!-- TRACK -->
-        <section id="status" class="section hidden">
-            <div class="sec-header"><h2 class="sec-title">👁️ புகார் நிலை</h2><p class="sec-desc">Token உள்ளிட்டு நிலையை பார்!</p></div>
-            <div class="track-wrap">
-                <div class="q-icon" style="text-align:center;margin-bottom:10px">🔮</div>
-                <div class="track-form">
-                    <input type="text" id="trk-input" class="finput" placeholder="ANI-XXXX token...">
-                    <button class="btn" onclick="trackIssue()">👁️ நிலை பார் 👁️</button>
-                </div>
-                <div id="trk-result" class="track-res hidden"></div>
-            </div>
-        </section>
+          <div class="fstep" id="s3"><div class="fstep-c"><label class="flabel">🏛 Department?</label><select id="f-dept" class="finput fselect"><option value="">--துறை--</option><option value="CSE">CSE</option><option value="ECE">ECE</option><option value="MECH">MECH</option><option value="CIVIL">CIVIL</option><option value="EEE">EEE</option><option value="IT">IT</option><option value="MBA">MBA</option><option value="OTHER">Other</option></select><div class="step-btns"><button type="button" class="btn btn-sec" data-go="2">◀</button><button type="button" class="btn" data-go="4">▶ 🔱</button></div></div></div>
 
-        <!-- ABOUT -->
-        <section id="about" class="section hidden">
-            <div class="sec-header"><h2 class="sec-title">🔱 அன்னியன் பற்றி</h2></div>
-            <div class="about-grid">
-                <div class="about-card"><div class="ico">⚖️</div><h3>யார் அன்னியன்?</h3><p>கல்லூரி நீதி அமைப்பு! புகார்களை ஏற்று நடவடிக்கை எடுக்கும்!</p></div>
-                <div class="about-card"><div class="ico">📜</div><h3>எப்படி செயல்படும்?</h3><p>1. புகார் அளி<br>2. Token பெறு<br>3. அன்னியன் விசாரிப்பான்<br>4. நீதி கிடைக்கும்!</p></div>
-                <div class="about-card"><div class="ico">🔒</div><h3>பாதுகாப்பு</h3><p>தகவல்கள் பாதுகாப்பாக! Admin மட்டுமே பார்க்க முடியும்!</p></div>
-                <div class="about-card"><div class="ico">🔱</div><h3>கருட புராணம்</h3><p>குற்ற தீவிரத்துக்கு ஏற்ப கருட புராண தண்டனை!</p></div>
-            </div>
-            <div class="garuda-sec">
-                <h3 class="garuda-title">🔥 கருட புராண தண்டனைகள் 🔥</h3>
-                <div class="garuda-grid">
-                    <div class="garuda-item"><strong>கும்பிபாகம்</strong>கொதிக்கும் எண்ணெயில் - Infrastructure</div>
-                    <div class="garuda-item"><strong>தைலபாகம்</strong>எரியும் நெருப்பில் - Ragging</div>
-                    <div class="garuda-item"><strong>ரௌரவம்</strong>காட்டு மிருகங்களால் - Faculty</div>
-                    <div class="garuda-item"><strong>மகா ரௌரவம்</strong>பாம்புகள் கடிக்கும் - Corruption</div>
-                    <div class="garuda-item"><strong>அவீசி</strong>தலைகீழ் தண்டனை - Fees</div>
-                    <div class="garuda-item"><strong>சூலப்ரோதம்</strong>சூலத்தால் குத்தும் - Canteen</div>
-                </div>
-            </div>
-        </section>
+          <div class="fstep" id="s4"><div class="fstep-c"><label class="flabel">⚠️ குற்றம்?</label><select id="f-cat" class="finput fselect"><option value="">--குற்றம்--</option><option value="Academic">Academic</option><option value="Infrastructure">Infrastructure</option><option value="Faculty">Faculty</option><option value="Hostel">Hostel</option><option value="Canteen">Canteen</option><option value="Transport">Transport</option><option value="Lab">Lab</option><option value="Fees">Fees</option><option value="Ragging">Ragging</option><option value="WiFi">WiFi</option><option value="Corruption">Corruption</option><option value="Other">Other</option></select><div class="step-btns"><button type="button" class="btn btn-sec" data-go="3">◀</button><button type="button" class="btn" data-go="5">▶ 🔱</button></div></div></div>
 
-        <footer class="footer">
-            <div class="footer-brand">🔱 ANNIYAN - அன்னியன் 🔱</div>
-            <p class="footer-txt">College Justice System - கல்லூரி நீதி மன்றம்</p>
-            <p class="footer-txt">© 2024 நீதி நிலைநாட்டப்படும் ⚖️</p>
-            <p class="footer-verse">"தர்மத்தை காப்பவன் தர்மத்தால் காக்கப்படுவான்"</p>
-        </footer>
+          <div class="fstep" id="s5"><div class="fstep-c"><label class="flabel">⚖️ தீவிரம்?</label><div class="sev-sel"><label class="sev-opt"><input type="radio" name="sev" value="Low"><div class="sev-card low"><span class="sev-ico">⚠️</span><span class="sev-txt">சிறு</span><span class="sev-desc">Minor</span><span class="sev-pun">எச்சரிக்கை</span></div></label><label class="sev-opt"><input type="radio" name="sev" value="Medium"><div class="sev-card med"><span class="sev-ico">🔥</span><span class="sev-txt">கடும்</span><span class="sev-desc">Serious</span><span class="sev-pun">கும்பி பாகம்</span></div></label><label class="sev-opt"><input type="radio" name="sev" value="High"><div class="sev-card high"><span class="sev-ico">💀</span><span class="sev-txt">மகா பாவம்</span><span class="sev-desc">Extreme!</span><span class="sev-pun">தைலபாகம்</span></div></label></div><div class="step-btns"><button type="button" class="btn btn-sec" data-go="4">◀</button><button type="button" class="btn" data-go="6">▶ 🔱</button></div></div></div>
+
+          <div class="fstep" id="s6"><div class="fstep-c"><label class="flabel">📝 விரிவாக சொல்!</label><textarea id="f-desc" class="finput ftextarea" rows="4" placeholder="என்ன நடந்தது?"></textarea><label class="flabel">👤 குற்றவாளி? (Optional)</label><input type="text" id="f-accused" class="finput" placeholder="பெயர்"><label class="flabel">📧 Email (Optional)</label><input type="email" id="f-email" class="finput" placeholder="email"><label class="flabel">📱 Phone (Optional)</label><input type="tel" id="f-phone" class="finput" placeholder="phone"><div class="step-btns"><button type="button" class="btn btn-sec" data-go="5">◀</button><button type="button" class="btn" data-go="7">▶ 🔱</button></div></div></div>
+
+          <div class="fstep" id="s7"><div class="fstep-c"><h3 class="rev-title">⚖️ சரிபார் ⚖️</h3><div class="rev-box" id="rev-box"></div><div class="chk-wrap"><label class="chk-lbl"><input type="checkbox" id="chk"><span class="chk-mark">🔱</span><span>உண்மையே சொல்கிறேன்! 🕉</span></label></div><div class="step-btns"><button type="button" class="btn btn-sec" data-go="6">◀</button><button type="button" class="btn btn-green" id="submitBtn">🔱 SUBMIT 🔱</button></div></div></div>
+        </form>
+      </div>
     </div>
+    <div id="modal-success" class="modal hidden"><div class="modal-box"><div class="modal-ico">⚖️</div><h2>புகார் பதிவானது!</h2><p>Complaint registered!</p><div class="punishment-box">🔱 குற்றவாளி தண்டிக்கப்படுவான்!<br>கருட புராணப்படி தண்டனை!<br>நியாயம் நிலைநாட்டப்படும்! ⚖️</div><div class="tkt-box"><p>Token:</p><h3 id="tkt-id" class="tkt-num">ANI-XXXX</h3><p class="tkt-note">இதை சேமி!</p></div><button class="btn" id="closeModalBtn">🔱 OK 🔱</button></div></div>
+  </section>
 
-    <div id="loader" class="loader hidden">
-        <div class="loader-c"><div class="loader-spin">🔱</div><p>அன்னியன் விசாரிக்கிறான்...</p></div>
+  <!-- TRACK -->
+  <section id="status" class="section hidden">
+    <div class="sec-header"><h2 class="sec-title">👁 புகார் நிலை</h2><p class="sec-desc">Token கொடு!</p></div>
+    <div class="track-wrap">
+      <div class="q-icon" style="text-align:center;margin-bottom:10px">🔮</div>
+      <div class="track-form"><input type="text" id="trk-input" class="finput" placeholder="ANI-XXXX..."><button class="btn" id="trackBtn">👁 பார் 👁</button></div>
+      <div id="trk-result" class="track-res hidden"></div>
     </div>
+  </section>
 
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+  <!-- ABOUT -->
+  <section id="about" class="section hidden">
+    <div class="sec-header"><h2 class="sec-title">🔱 பற்றி</h2></div>
+    <div class="about-grid">
+      <div class="about-card"><div class="ico">⚖️</div><h3>யார் அன்னியன்?</h3><p>கல்லூரி நீதி அமைப்பு!</p></div>
+      <div class="about-card"><div class="ico">📜</div><h3>எப்படி?</h3><p>1.புகார்<br>2.Token<br>3.விசாரணை<br>4.நீதி!</p></div>
+      <div class="about-card"><div class="ico">🔒</div><h3>பாதுகாப்பு</h3><p>Admin மட்டுமே பார்க்கும்!</p></div>
+      <div class="about-card"><div class="ico">🔱</div><h3>கருட புராணம்</h3><p>குற்றத்துக்கு ஏற்ப தண்டனை!</p></div>
+    </div>
+    <div class="garuda-sec">
+      <h3 class="garuda-title">🔥 தண்டனைகள் 🔥</h3>
+      <div class="garuda-grid">
+        <div class="garuda-item"><strong>கும்பி பாகம்</strong>கொதிக்கும் எண்ணெய்</div>
+        <div class="garuda-item"><strong>தைலபாகம்</strong>நெருப்பு</div>
+        <div class="garuda-item"><strong>ரௌரவம்</strong>மிருகங்கள்</div>
+        <div class="garuda-item"><strong>மகா ரௌரவம்</strong>பாம்புகள்</div>
+        <div class="garuda-item"><strong>அவீசி</strong>தலைகீழ்</div>
+        <div class="garuda-item"><strong>சூலப்ரோதம்</strong>சூலம்</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-brand">🔱ANNIYAN 🔱</div>
+    <p class="footer-txt">College Justice System</p>
+    <p class="footer-txt">© 2024 ⚖️</p>
+    <p class="footer-verse">"தர்மத்தை காப்பவன் காக்கப்படுவான்"</p>
+  </footer>
+</div>
+
+<div id="loader" class="loader hidden"><div class="loader-c"><div class="loader-spin">🔱</div><p>விசாரிக்கிறான்...</p></div></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 <script>
-// ===== FIREBASE =====
-firebase.initializeApp({
-    apiKey:"AIzaSyA4yp_dKNZgLevqda4bQL6V92kvbgoHSQs",authDomain:"tech-venture.firebaseapp.com",
-    databaseURL:"https://tech-venture-default-rtdb.firebaseio.com",projectId:"tech-venture",
-    storageBucket:"tech-venture.firebasestorage.app",messagingSenderId:"444695555385",
-    appId:"1:444695555385:web:acd44a36be2f0d5f7acce8"
-});
-const db=firebase.database();
+var firebaseConfig={apiKey:"AIzaSyA4yp_dKNZgLevqda4bQL6V92kvbgoHSQs",authDomain:"tech-venture.firebaseapp.com",databaseURL:"https://tech-venture-default-rtdb.firebaseio.com",projectId:"tech-venture",storageBucket:"tech-venture.firebasestorage.app",messagingSenderId:"444695555385",appId:"1:444695555385:web:acd44a36be2f0d5f7acce8"};
+firebase.initializeApp(firebaseConfig);
+var db=firebase.database();
 
-// ===== GARUDA PUNISHMENTS =====
-const GP={
-    Academic:"வாக்கு மூலம் - அக்கினி தண்டனை 🔥",
-    Infrastructure:"கும்பிபாகம் - கொதிக்கும் எண்ணெயில் 🫗",
-    Faculty:"ரௌரவம் - காட்டு மிருகங்களால் 🐅",
-    Hostel:"அந்தகூபம் - இருட்டு குழியில் 🕳️",
-    Canteen:"சூலப்ரோதம் - சூலத்தால் குத்தும் 🔱",
-    Transport:"வைதரணி - கொதிக்கும் நதியில் 🌊",
-    Library:"அசிபத்ரவனம் - கூர்மையான இலைகள் 🍃",
-    Lab:"சந்தம்சம் - இரும்பு கிள்ளிகளால் ⚙️",
-    Fees:"அவீசி - தலைகீழாக தொங்கும் 🙃",
-    Ragging:"தைலபாகம் - எரியும் நெருப்பில் 🔥",
-    WiFi:"தாமிஸ்ரம் - இருளில் அடிப்பு 👊",
-    Corruption:"மகா ரௌரவம் - பாம்புகள் கடிக்கும் 🐍",
-    Other:"யமலோக தண்டனை ⚖️"
-};
+var GP={Academic:"அக்கினி தண்டனை 🔥",Infrastructure:"கும்பி பாகம் 🫗",Faculty:"ரௌரவம் 🐅",Hostel:"அந்தகூபம் 🕳",Canteen:"சூலப்ரோதம் 🔱",Transport:"வைதரணி 🌊",Library:"அசிபத்ர வனம் 🍃",Lab:"சந்தம்சம் ⚙️",Fees:"அவீசி 🙃",Ragging:"தைலபாகம் 🔥",WiFi:"தாமிஸ்ரம் 👊",Corruption:"மகா ரௌரவம் 🐍",Other:"யமலோக தண்டனை ⚖️"};
 
-// ===== PARTICLES =====
-(function(){
-    const c=document.getElementById('particles-container');
-    const cols=['#cc0000','#ff4400','#ff3300','#8b0000','#dc143c'];
-    setInterval(()=>{
-        const p=document.createElement('div');p.classList.add('particle');
-        const s=Math.random()*6+2;
-        p.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;background-color:${cols[Math.floor(Math.random()*cols.length)]};animation-duration:${Math.random()*5+4}s;box-shadow:0 0 ${s*2}px ${p.style.backgroundColor}`;
-        c.appendChild(p);setTimeout(()=>p.remove(),9000);
-    },250);
-})();
+// Particles
+(function(){var c=document.getElementById('particles-container');var cols=['#cc0000','#ff4400','#ff3300','#8b0000','#dc143c'];setInterval(function(){var p=document.createElement('div');p.className='particle';var s=Math.random()*6+2;p.style.width=s+'px';p.style.height=s+'px';p.style.left=Math.random()*100+'%';p.style.backgroundColor=cols[Math.floor(Math.random()*cols.length)];p.style.animationDuration=(Math.random()*5+4)+'s';p.style.boxShadow='0 0 '+(s*2)+'px '+p.style.backgroundColor;c.appendChild(p);setTimeout(function(){p.remove()},9000)},250)})();
 
-// ===== LIGHTNING =====
-function flash(){const f=document.getElementById('lightning-flash');f.classList.add('lightning-active');setTimeout(()=>f.classList.remove('lightning-active'),300)}
-setInterval(()=>{if(Math.random()>.75)flash()},6000);
+function flash(){var f=document.getElementById('lightning-flash');f.classList.add('lightning-active');setTimeout(function(){f.classList.remove('lightning-active')},300)}
+setInterval(function(){if(Math.random()>.75)flash()},6000);
 
-// ===== INTRO =====
-function skipIntro(){
-    document.getElementById('intro-screen').style.opacity='0';
-    document.getElementById('intro-screen').style.transition='opacity 0.8s';
-    setTimeout(()=>{
-        document.getElementById('intro-screen').classList.add('hidden');
-        // Check if gate already opened
-        if(sessionStorage.getItem('gateOpened')){
-            document.getElementById('gate-screen').classList.add('hidden');
-            document.getElementById('main-content').classList.remove('hidden');
-            loadStats();
-        } else {
-            document.getElementById('gate-screen').classList.remove('hidden');
-        }
-    },800);
-}
+function esc(t){if(!t)return'';var d=document.createElement('div');d.textContent=t;return d.innerHTML}
 
-// Auto skip after 8 seconds
-setTimeout(()=>{
-    if(!document.getElementById('intro-screen').classList.contains('hidden')){
-        skipIntro();
-    }
-},8000);
+// Intro
+function skipIntro(){var i=document.getElementById('intro-screen');i.style.opacity='0';i.style.transition='opacity .8s';setTimeout(function(){i.classList.add('hidden');if(sessionStorage.getItem('gateOpened')){document.getElementById('gate-screen').classList.add('hidden');document.getElementById('main-content').classList.remove('hidden');loadStats()}else{document.getElementById('gate-screen').classList.remove('hidden')}},800)}
+document.getElementById('skipBtn').addEventListener('click',skipIntro);
+setTimeout(function(){if(!document.getElementById('intro-screen').classList.contains('hidden'))skipIntro()},8000);
 
-// ===== GATES =====
-function openGates(){
-    flash();
-    const gt=document.querySelector('.gate-text');
-    gt.style.opacity='0';gt.style.transition='opacity 0.5s';
-    setTimeout(()=>{
-        document.querySelector('.gate-left').classList.add('open');
-        document.querySelector('.gate-right').classList.add('open');
-    },500);
-    setTimeout(()=>{
-        document.getElementById('gate-screen').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-        sessionStorage.setItem('gateOpened','true');
-        loadStats();
-    },3000);
-}
+// Gates
+function openGates(){flash();var gt=document.querySelector('.gate-text');gt.style.opacity='0';gt.style.transition='opacity .5s';setTimeout(function(){document.querySelector('.gate-left').classList.add('open');document.querySelector('.gate-right').classList.add('open')},500);setTimeout(function(){document.getElementById('gate-screen').classList.add('hidden');document.getElementById('main-content').classList.remove('hidden');sessionStorage.setItem('gateOpened','true');loadStats()},3000)}
+document.getElementById('gateBtn').addEventListener('click',openGates);
 
-// ===== NAV =====
-function showSection(id,e){
-    if(e)e.preventDefault();
-    document.querySelectorAll('.section').forEach(s=>s.classList.add('hidden'));
-    document.getElementById(id).classList.remove('hidden');
-    // Active link
-    document.querySelectorAll('.nav-link:not(.admin-link)').forEach(l=>l.classList.remove('active'));
-    const m={home:'நீதி',complain:'புகார்',status:'நிலை',about:'பற்றி'};
-    document.querySelectorAll('.nav-link').forEach(l=>{if(m[id]&&l.textContent.includes(m[id]))l.classList.add('active')});
-    window.scrollTo({top:0,behavior:'smooth'});
-    updateSpeech(id);
-}
-function toggleMobile(){document.getElementById('mobile-nav').classList.toggle('hidden')}
+// Nav
+function showSection(id){document.querySelectorAll('.section').forEach(function(s){s.classList.add('hidden')});document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.nav-link:not(.admin-link)').forEach(function(l){l.classList.remove('active')});var map={home:'நீதி',complain:'புகார்',status:'நிலை',about:'பற்றி'};document.querySelectorAll('.nav-link').forEach(function(l){if(map[id]&&l.textContent.indexOf(map[id])!==-1)l.classList.add('active')});window.scrollTo({top:0,behavior:'smooth'});updateSpeech(id)}
+document.querySelectorAll('[data-section]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();showSection(this.getAttribute('data-section'));var mn=document.getElementById('mobile-nav');if(!mn.classList.contains('hidden'))mn.classList.add('hidden')})});
+document.getElementById('hamBtn').addEventListener('click',function(){document.getElementById('mobile-nav').classList.toggle('hidden')});
 
-// ===== SPEECHES =====
-const SP={
-    home:[{t:"நான் அன்னியன்! அநீதிக்கு தண்டனை வழங்குவேன்! 🔱",e:"I am Anniyan! I punish injustice!"},
-          {t:"குற்றவாளி எங்கே ஓடினாலும் கண்டுபிடிப்பேன்! ⚖️",e:"I will find the guilty anywhere!"},
-          {t:"தர்மம் தவறினால் அன்னியன் வருவான்! 🔥",e:"When dharma fails, Anniyan comes!"}],
-    complain:[{t:"சொல்! குற்றவாளி யார்? என்ன குற்றம்? ஆதாரம் என்ன? 📜",e:"Tell! Who? What crime? What proof?"},
-              {t:"பயப்படாதே! உண்மையை சொல்! அன்னியன் காப்பான்! 🔱",e:"Don't fear! Tell truth!"}],
-    status:[{t:"Token கொடு! புகார் நிலை சொல்கிறேன்! 👁️",e:"Give token! I'll tell status!"}],
-    about:[{t:"அன்னியன் = நீதி! கருட புராணம் = தண்டனை! 🔱",e:"Anniyan = Justice!"}]
-};
-function updateSpeech(sec){
-    const s=SP[sec]||SP.home;const p=s[Math.floor(Math.random()*s.length)];
-    const ta=document.getElementById('sp-ta'),en=document.getElementById('sp-en');
-    if(ta){ta.style.opacity='0';en.style.opacity='0';
-    setTimeout(()=>{ta.textContent=p.t;en.textContent=p.e;ta.style.opacity='1';en.style.opacity='1'},300)}
-}
+// Speeches
+var SP={home:[{t:"நான் அன்னியன்! தண்டனை வழங்குவேன்! 🔱",e:"I am Anniyan!"},{t:"குற்றவாளி தப்பிக்க முடியாது! ⚖️",e:"No escape!"},{t:"தர்மம் தவறினால் அன்னியன் வருவான்! 🔥",e:"Anniyan comes!"}],complain:[{t:"சொல்! குற்றவாளி யார்? ஆதாரம்? 📜",e:"Who? What proof?"},{t:"பயப்படாதே! உண்மை சொல்! 🔱",e:"Tell truth!"}],status:[{t:"Token கொடு! 👁",e:"Give token!"}],about:[{t:"அன்னியன் = நீதி! 🔱",e:"Anniyan = Justice!"}]};
+function updateSpeech(sec){var list=SP[sec]||SP.home;var pick=list[Math.floor(Math.random()*list.length)];var ta=document.getElementById('sp-ta');var en=document.getElementById('sp-en');if(ta){ta.style.opacity='0';en.style.opacity='0';setTimeout(function(){ta.textContent=pick.t;en.textContent=pick.e;ta.style.opacity='1';en.style.opacity='1'},300)}}
 
-// ===== FORM QUESTIONS =====
-const Q={
-    0:"விசாரணை தொடங்க START அழுத்து!",
-    1:"👤 முதல் கேள்வி! உன் பெயர் என்ன? சொல்!",
-    2:"🔢 Roll Number சொல்! தப்பிக்க முடியாது!",
-    3:"🏛️ எந்த Department? எங்கே அநீதி?",
-    4:"⚠️ என்ன குற்றம் நடந்தது?",
-    5:"⚖️ குற்றத்தின் தீவிரம் என்ன?",
-    6:"📝 எல்லாவற்றையும் விரிவாக சொல்! குற்றவாளி யார்? ஆதாரம் என்ன?",
-    7:"⚡ சரிபார்! பொய் சொன்னால் உனக்கே தண்டனை!"
-};
+// Form
+var Q={0:"START அழுத்து!",1:"👤 பெயர்?",2:"🔢 Roll?",3:"🏛 Dept?",4:"⚠️ குற்றம்?",5:"⚖️ தீவிரம்?",6:"📝 விரிவாக சொல்! குற்றவாளி யார்?",7:"⚡ சரிபார்!"};
+var curStep=0;
+function goStep(n){if(n>curStep&&!valStep(curStep)){var f=document.getElementById('form-box');f.style.animation='none';f.offsetHeight;f.style.animation='shake .5s';document.getElementById('q-text').textContent='🔱 பதில் சொல்! 😡';flash();return}document.getElementById('s'+curStep).classList.remove('active');curStep=n;document.getElementById('s'+curStep).classList.add('active');document.getElementById('pfill').style.width=(n/7*100)+'%';document.getElementById('ptext').textContent=n+'/7';document.getElementById('q-text').textContent=Q[n];if(n===7)fillReview();document.getElementById('form-box').scrollIntoView({behavior:'smooth',block:'start'})}
+function valStep(s){switch(s){case 1:return document.getElementById('f-name').value.trim()!=='';case 2:return document.getElementById('f-roll').value.trim()!=='';case 3:return document.getElementById('f-dept').value!=='';case 4:return document.getElementById('f-cat').value!=='';case 5:return document.querySelector('input[name="sev"]:checked')!==null;case 6:return document.getElementById('f-desc').value.trim()!=='';default:return true}}
+document.getElementById('startBtn').addEventListener('click',function(){goStep(1)});
+document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){goStep(parseInt(this.getAttribute('data-go')))})});
 
-let curStep=0;
-function goStep(n){
-    if(n>curStep&&!valStep(curStep)){shakeForm();return}
-    document.getElementById('s'+curStep).classList.remove('active');
-    curStep=n;
-    document.getElementById('s'+curStep).classList.add('active');
-    document.getElementById('pfill').style.width=(n/7*100)+'%';
-    document.getElementById('ptext').textContent=n+' / 7';
-    document.getElementById('q-text').textContent=Q[n];
-    if(n===7)fillReview();
-    document.getElementById('form-box').scrollIntoView({behavior:'smooth',block:'start'});
-}
-function valStep(s){
-    switch(s){
-        case 1:return document.getElementById('f-name').value.trim()!=='';
-        case 2:return document.getElementById('f-roll').value.trim()!=='';
-        case 3:return document.getElementById('f-dept').value!=='';
-        case 4:return document.getElementById('f-cat').value!=='';
-        case 5:return document.querySelector('input[name="sev"]:checked')!==null;
-        case 6:return document.getElementById('f-desc').value.trim()!=='';
-        default:return true;
-    }
-}
-function shakeForm(){
-    const f=document.getElementById('form-box');f.style.animation='none';f.offsetHeight;
-    f.style.animation='shake .5s ease-in-out';
-    document.getElementById('q-text').textContent='🔱 பதில் சொல்! Answer first! தப்பிக்க முடியாது! 😡';
-    flash();
-}
-function esc(t){const d=document.createElement('div');d.textContent=t;return d.innerHTML}
+function fillReview(){var nm=document.getElementById('f-name').value;var rl=document.getElementById('f-roll').value;var dp=document.getElementById('f-dept').value;var ct=document.getElementById('f-cat').value;var sevEl=document.querySelector('input[name="sev"]:checked');var sv=sevEl?sevEl.value:'';var ds=document.getElementById('f-desc').value;var ac=document.getElementById('f-accused').value||'N/A';var pn=GP[ct]||'யமலோக ⚖️';document.getElementById('rev-box').innerHTML='<div class="rev-item"><span class="rev-lbl">👤 பெயர்:</span><span class="rev-val">'+esc(nm)+'</span></div><div class="rev-item"><span class="rev-lbl">🔢 Roll:</span><span class="rev-val">'+esc(rl)+'</span></div><div class="rev-item"><span class="rev-lbl">🏛 துறை:</span><span class="rev-val">'+esc(dp)+'</span></div><div class="rev-item"><span class="rev-lbl">⚠️ குற்றம்:</span><span class="rev-val">'+esc(ct)+'</span></div><div class="rev-item"><span class="rev-lbl">⚖️ தீவிரம்:</span><span class="rev-val">'+sv+'</span></div><div class="rev-item"><span class="rev-lbl">👤 குற்றவாளி:</span><span class="rev-val">'+esc(ac)+'</span></div><div class="rev-item"><span class="rev-lbl">📝 விவரம்:</span><span class="rev-val">'+esc(ds)+'</span></div><div class="rev-item" style="border:1px solid var(--blood);border-radius:8px;padding:10px;background:rgba(204,0,0,.08)"><span class="rev-lbl" style="color:var(--blood)">🔱 தண்டனை:</span><span class="rev-val" style="color:var(--crimson)">'+pn+'</span></div>'}
 
-function fillReview(){
-    const nm=document.getElementById('f-name').value,rl=document.getElementById('f-roll').value;
-    const dp=document.getElementById('f-dept').value,ct=document.getElementById('f-cat').value;
-    const sv=document.querySelector('input[name="sev"]:checked')?.value||'';
-    const ds=document.getElementById('f-desc').value;
-    const ac=document.getElementById('f-accused').value||'குறிப்பிடவில்லை';
-    const pn=GP[ct]||'யமலோக தண்டனை ⚖️';
+// Submit
+document.getElementById('submitBtn').addEventListener('click',function(){if(!document.getElementById('chk').checked){document.getElementById('q-text').textContent='🔱 சத்தியம் செய்! 😡';flash();return}document.getElementById('loader').classList.remove('hidden');var tid='ANI-'+Math.random().toString(36).substring(2,6).toUpperCase()+Math.floor(Math.random()*1000);var cat=document.getElementById('f-cat').value;var sevEl=document.querySelector('input[name="sev"]:checked');var data={ticketId:tid,name:document.getElementById('f-name').value.trim(),rollNumber:document.getElementById('f-roll').value.trim(),department:document.getElementById('f-dept').value,category:cat,severity:sevEl?sevEl.value:'Low',description:document.getElementById('f-desc').value.trim(),accusedName:document.getElementById('f-accused').value.trim()||'N/A',email:document.getElementById('f-email').value.trim()||'N/A',phone:document.getElementById('f-phone').value.trim()||'N/A',punishment:GP[cat]||'யமலோக ⚖️',status:'Pending',timestamp:new Date().toISOString(),dateSubmitted:new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}),adminNotes:''};db.ref('complaints/'+tid).set(data).then(function(){document.getElementById('loader').classList.add('hidden');document.getElementById('tkt-id').textContent=tid;document.getElementById('modal-success').classList.remove('hidden');flash();resetForm();loadStats()}).catch(function(e){document.getElementById('loader').classList.add('hidden');alert('Error: '+e.message)})});
 
-    document.getElementById('rev-box').innerHTML=
-        `<div class="rev-item"><span class="rev-lbl">👤 பெயர்:</span><span class="rev-val">${esc(nm)}</span></div>
-        <div class="rev-item"><span class="rev-lbl">🔢 Roll:</span><span class="rev-val">${esc(rl)}</span></div>
-        <div class="rev-item"><span class="rev-lbl">🏛️ துறை:</span><span class="rev-val">${esc(dp)}</span></div>
-        <div class="rev-item"><span class="rev-lbl">⚠️ குற்றம்:</span><span class="rev-val">${esc(ct)}</span></div>
-        <div class="rev-item"><span class="rev-lbl">⚖️ தீவிரம்:</span><span class="rev-val">${sv}</span></div>
-        <div class="rev-item"><span class="rev-lbl">👤 குற்றவாளி:</span><span class="rev-val">${esc(ac)}</span></div>
-        <div class="rev-item"><span class="rev-lbl">📝 விவரம்:</span><span class="rev-val">${esc(ds)}</span></div>
-        <div class="rev-item" style="border:1px solid var(--blood);border-radius:8px;padding:10px;background:rgba(204,0,0,.08)">
-            <span class="rev-lbl" style="color:var(--blood)">🔱 தண்டனை:</span>
-            <span class="rev-val" style="color:var(--crimson)">${pn}</span></div>`;
-}
+function resetForm(){document.getElementById('cform').reset();curStep=0;document.querySelectorAll('.fstep').forEach(function(s){s.classList.remove('active')});document.getElementById('s0').classList.add('active');document.getElementById('pfill').style.width='0%';document.getElementById('ptext').textContent='0/7';document.getElementById('q-text').textContent=Q[0]}
+document.getElementById('closeModalBtn').addEventListener('click',function(){document.getElementById('modal-success').classList.add('hidden');showSection('home')});
 
-// ===== SUBMIT =====
-function submitForm(){
-    if(!document.getElementById('chk').checked){
-        document.getElementById('q-text').textContent='🔱 சத்தியம் செய்! Check the box! 😡';
-        flash();return;
-    }
-    document.getElementById('loader').classList.remove('hidden');
-    const tid='ANI-'+Math.random().toString(36).substring(2,6).toUpperCase()+Math.floor(Math.random()*1000);
-    const cat=document.getElementById('f-cat').value;
-    const data={
-        ticketId:tid,
-        name:document.getElementById('f-name').value.trim(),
-        rollNumber:document.getElementById('f-roll').value.trim(),
-        department:document.getElementById('f-dept').value,
-        category:cat,
-        severity:document.querySelector('input[name="sev"]:checked').value,
-        description:document.getElementById('f-desc').value.trim(),
-        accusedName:document.getElementById('f-accused').value.trim()||'Not specified',
-        email:document.getElementById('f-email').value.trim()||'N/A',
-        phone:document.getElementById('f-phone').value.trim()||'N/A',
-        punishment:GP[cat]||'யமலோக தண்டனை ⚖️',
-        status:'Pending',
-        timestamp:new Date().toISOString(),
-        dateSubmitted:new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit'}),
-        adminNotes:''
-    };
-    db.ref('complaints/'+tid).set(data).then(()=>{
-        document.getElementById('loader').classList.add('hidden');
-        document.getElementById('tkt-id').textContent=tid;
-        document.getElementById('modal-success').classList.remove('hidden');
-        flash();resetForm();loadStats();
-    }).catch(e=>{document.getElementById('loader').classList.add('hidden');alert('Error: '+e.message)});
-}
-function resetForm(){
-    document.getElementById('cform').reset();curStep=0;
-    document.querySelectorAll('.fstep').forEach(s=>s.classList.remove('active'));
-    document.getElementById('s0').classList.add('active');
-    document.getElementById('pfill').style.width='0%';
-    document.getElementById('ptext').textContent='0 / 7';
-    document.getElementById('q-text').textContent=Q[0];
-}
-function closeModal(){document.getElementById('modal-success').classList.add('hidden');showSection('home')}
+// Track
+document.getElementById('trackBtn').addEventListener('click',trackIssue);
+document.getElementById('trk-input').addEventListener('keydown',function(e){if(e.key==='Enter')trackIssue()});
+function trackIssue(){var id=document.getElementById('trk-input').value.trim().toUpperCase();var r=document.getElementById('trk-result');if(!id){r.classList.add('hidden');return}document.getElementById('loader').classList.remove('hidden');db.ref('complaints/'+id).once('value').then(function(snap){document.getElementById('loader').classList.add('hidden');if(snap.exists()){var d=snap.val();var bc=d.status==='Pending'?'badge-pend':d.status==='In Progress'?'badge-prog':'badge-done';var bt=d.status==='Pending'?'🔥 நிலுவை':d.status==='In Progress'?'⚡ நடவடிக்கை':'✅ தீர்வு';r.innerHTML='<div class="track-hdr"><span class="track-tid">'+d.ticketId+'</span><span class="badge '+bc+'">'+bt+'</span></div><div class="track-row"><span class="track-lbl">⚠️ குற்றம்:</span><span class="track-val">'+esc(d.category)+'</span></div><div class="track-row"><span class="track-lbl">🏛 துறை:</span><span class="track-val">'+esc(d.department)+'</span></div><div class="track-row"><span class="track-lbl">⚖️ தீவிரம்:</span><span class="track-val">'+d.severity+'</span></div><div class="track-row"><span class="track-lbl">📝 விவரம்:</span><span class="track-val">'+esc(d.description)+'</span></div><div class="track-row"><span class="track-lbl">🔱 தண்டனை:</span><span class="track-val" style="color:var(--blood)">'+esc(d.punishment||'')+'</span></div><div class="track-row"><span class="track-lbl">📅 தேதி:</span><span class="track-val">'+d.dateSubmitted+'</span></div>'+(d.adminNotes?'<div class="track-row"><span class="track-lbl">📋 குறிப்பு:</span><span class="track-val">'+esc(d.adminNotes)+'</span></div>':'');r.classList.remove('hidden')}else{r.innerHTML='<div style="text-align:center;padding:30px"><div style="font-size:4rem">🔱</div><h3 style="color:var(--crimson);margin:10px 0">கிடைக்கவில்லை!</h3><p style="color:#666">'+esc(id)+' not found</p></div>';r.classList.remove('hidden')}}).catch(function(e){document.getElementById('loader').classList.add('hidden');r.innerHTML='<p style="color:red;text-align:center;padding:20px">'+e.message+'</p>';r.classList.remove('hidden')})}
 
-// ===== TRACK =====
-function trackIssue(){
-    const id=document.getElementById('trk-input').value.trim().toUpperCase();
-    const r=document.getElementById('trk-result');
-    if(!id){r.classList.add('hidden');return}
-    document.getElementById('loader').classList.remove('hidden');
-    db.ref('complaints/'+id).once('value').then(snap=>{
-        document.getElementById('loader').classList.add('hidden');
-        if(snap.exists()){
-            const d=snap.val();
-            const bc=d.status==='Pending'?'badge-pend':d.status==='In Progress'?'badge-prog':'badge-done';
-            const bt=d.status==='Pending'?'🔥 நிலுவை':d.status==='In Progress'?'⚡ நடவடிக்கையில்':'✅ தீர்வு';
-            r.innerHTML=`<div class="track-hdr"><span class="track-tid">${d.ticketId}</span><span class="badge ${bc}">${bt}</span></div>
-                <div class="track-row"><span class="track-lbl">⚠️ குற்றம்:</span><span class="track-val">${esc(d.category)}</span></div>
-                <div class="track-row"><span class="track-lbl">🏛️ துறை:</span><span class="track-val">${esc(d.department)}</span></div>
-                <div class="track-row"><span class="track-lbl">⚖️ தீவிரம்:</span><span class="track-val">${d.severity}</span></div>
-                <div class="track-row"><span class="track-lbl">📝 விவரம்:</span><span class="track-val">${esc(d.description)}</span></div>
-                <div class="track-row"><span class="track-lbl">🔱 தண்டனை:</span><span class="track-val" style="color:var(--blood)">${esc(d.punishment||'')}</span></div>
-                <div class="track-row"><span class="track-lbl">📅 தேதி:</span><span class="track-val">${d.dateSubmitted}</span></div>
-                ${d.adminNotes?`<div class="track-row"><span class="track-lbl">📋 குறிப்பு:</span><span class="track-val">${esc(d.adminNotes)}</span></div>`:''}`;
-            r.classList.remove('hidden');
-        }else{
-            r.innerHTML='<div style="text-align:center;padding:30px"><div style="font-size:4rem">🔱</div><h3 style="color:var(--crimson);margin:10px 0">புகார் கிடைக்கவில்லை!</h3><p style="color:#666">Token: '+esc(id)+' not found</p></div>';
-            r.classList.remove('hidden');
-        }
-    }).catch(e=>{document.getElementById('loader').classList.add('hidden');r.innerHTML='<p style="color:red;text-align:center;padding:20px">'+e.message+'</p>';r.classList.remove('hidden')});
-}
+// Stats
+function loadStats(){db.ref('complaints').on('value',function(snap){var t=0,p=0,r=0;snap.forEach(function(c){t++;var st=c.val().status;if(st==='Pending'||st==='In Progress')p++;if(st==='Resolved')r++});var animN=function(id,tgt){var el=document.getElementById(id);if(!el)return;var cur=parseInt(el.textContent)||0;if(cur===tgt)return;var inc=tgt>cur?1:-1;var tm=setInterval(function(){cur+=inc;el.textContent=cur;if(cur===tgt)clearInterval(tm)},Math.max(1000/Math.abs(tgt-cur),30))};animN('s-total',t);animN('s-pending',p);animN('s-resolved',r)})}
 
-// ===== STATS =====
-function loadStats(){
-    db.ref('complaints').on('value',snap=>{
-        let t=0,p=0,r=0;
-        snap.forEach(c=>{t++;const st=c.val().status;if(st==='Pending'||st==='In Progress')p++;if(st==='Resolved')r++});
-        const anim=(id,tgt)=>{const el=document.getElementById(id);if(!el)return;let cur=parseInt(el.textContent)||0;if(cur===tgt)return;const inc=tgt>cur?1:-1;const tm=setInterval(()=>{cur+=inc;el.textContent=cur;if(cur===tgt)clearInterval(tm)},Math.max(1000/Math.abs(tgt-cur),30))};
-        anim('s-total',t);anim('s-pending',p);anim('s-resolved',r);
-    });
-}
+// Anniyan click
+document.getElementById('anniyan').addEventListener('click',function(){var lines=[{t:"தொடாதே! 😤🔱",e:"Don't touch!"},{t:"புகார் கொடு! 👿",e:"File complaint!"},{t:"28 தண்டனை இருக்கு! 📜🔥",e:"28 punishments!"},{t:"நடுங்குவார்கள்! ⚖️",e:"They'll tremble!"},{t:"தப்ப முடியாது! 🔱",e:"No escape!"}];var pick=lines[Math.floor(Math.random()*lines.length)];var ta=document.getElementById('sp-ta');var en=document.getElementById('sp-en');ta.style.opacity='0';en.style.opacity='0';setTimeout(function(){ta.textContent=pick.t;en.textContent=pick.e;ta.style.opacity='1';en.style.opacity='1'},200);flash()});
 
-// ===== EYE TRACKING =====
-document.addEventListener('mousemove',e=>{
-    document.querySelectorAll('.a-pupil').forEach(p=>{
-        const eye=p.parentElement,rect=eye.getBoundingClientRect();
-        const a=Math.atan2(e.clientY-(rect.top+rect.height/2),e.clientX-(rect.left+rect.width/2));
-        p.style.transform=`translate(${Math.cos(a)*3}px,${Math.sin(a)*3}px)`;
-    });
-});
-
-// ===== ANNIYAN CLICK =====
-document.getElementById('anniyan')?.addEventListener('click',()=>{
-    const L=[{t:"என்னை தொடாதே! 😤🔱",e:"Don't touch me!"},{t:"புகார் கொடு! என்னை தொட்டு என்ன? 👿",e:"File complaint!"},
-        {t:"28 தண்டனைகள் இருக்கு! உனக்கு எது? 📜🔥",e:"28 punishments! Which for you?"},{t:"குற்றவாளிகள் நடுங்குவார்கள்! ⚖️",e:"The guilty shall tremble!"},
-        {t:"அன்னியன் சட்டம்! தப்ப முடியாது! 🔱",e:"Anniyan's law! No escape!"}];
-    const p=L[Math.floor(Math.random()*L.length)];
-    const ta=document.getElementById('sp-ta'),en=document.getElementById('sp-en');
-    ta.style.opacity='0';en.style.opacity='0';
-    setTimeout(()=>{ta.textContent=p.t;en.textContent=p.e;ta.style.opacity='1';en.style.opacity='1'},200);
-    flash();
-});
-
-document.addEventListener('keydown',e=>{if(e.key==='Enter'&&document.activeElement===document.getElementById('trk-input'))trackIssue()});
-
-// ===== INIT =====
-document.addEventListener('DOMContentLoaded',()=>{
-    // If already visited, skip intro and gate
-    if(sessionStorage.getItem('gateOpened')){
-        document.getElementById('intro-screen').classList.add('hidden');
-        document.getElementById('gate-screen').classList.add('hidden');
-        document.getElementById('main-content').classList.remove('hidden');
-        loadStats();
-    }
-});
+// Init
+window.addEventListener('DOMContentLoaded',function(){if(sessionStorage.getItem('gateOpened')){document.getElementById('intro-screen').classList.add('hidden');document.getElementById('gate-screen').classList.add('hidden');document.getElementById('main-content').classList.remove('hidden');loadStats()}});
 </script>
 </body>
 </html>
